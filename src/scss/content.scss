@@ -1,0 +1,10 @@
+@use "color";
+
+.content-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 30px;
+
+  @import "about";
+}

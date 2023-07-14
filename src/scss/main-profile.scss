@@ -1,0 +1,15 @@
+/*
+    Main CSS for profile - visitor view
+*/
+@use "color" as *;
+@use "reset";
+@use "nav";
+@use "main";
+
+#root {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
+

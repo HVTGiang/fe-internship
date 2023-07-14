@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "sass": "^1.63.6"
+  },
+  "name": "fe-giang-hoang",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "style-profile": "sass src/scss/main-profile.scss public/main-profile.css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
