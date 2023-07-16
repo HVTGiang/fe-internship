@@ -7,9 +7,32 @@
 @use "main";
 
 #root {
-  width: 100vw;
   display: flex;
   flex-direction: row;
+  transition: all linear 0.3s;
+
+  #switch {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    font-size: 2rem;
+    border-radius: 50%;
+    background-color: $orange;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    right: 20px;
+
+    i {
+      transition: all linear 0.2s;
+    }
+
+    &:hover {
+      i {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
 }
-
-

@@ -70,6 +70,10 @@
         transition: all linear 0.3s;
       }
 
+      path {
+        fill: $white;
+      }
+
       &--select {
         svg,
         span {
@@ -105,21 +109,21 @@
         }
         cursor: pointer;
 
-        // &::before {
-        //   content: "";
-        //   display: block;
-        //   padding: 24px 41px;
-        //   background-image: linear-gradient(
-        //     to right,
-        //     $white,
-        //     $white,
-        //     rgba(255, 255, 255, 0)
-        //   );
-        //   position: absolute;
-        //   left: -44px;
-        //   top: -50%;
-        //   opacity: 20%;
-        // }
+        &::before {
+          content: "";
+          display: block;
+          padding: 24px 41px;
+          background-image: linear-gradient(
+            to right,
+            $white,
+            $white,
+            rgba(255, 255, 255, 0)
+          );
+          position: absolute;
+          left: -44px;
+          top: -50%;
+          opacity: 20%;
+        }
       }
     }
   }

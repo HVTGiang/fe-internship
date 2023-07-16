@@ -2,12 +2,12 @@
   @content;
   background-color: $color;
   border-radius: 50%;
-  
+
   img {
+    display: block;
     width: 100%;
+    height: 100%;
     object-fit: cover;
-    z-index: 50000;
-    position: relative;
   }
 
   //   &::after {

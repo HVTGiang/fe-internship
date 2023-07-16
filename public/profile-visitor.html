@@ -15,9 +15,10 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="main-profile.css" />
+    <script src="../src/js/main.js" defer></script>
   </head>
   <body>
-    <div id="root">
+    <div id="root" class="visitor">
       <!-- NAV SIDE BAR -->
       <nav id="nav">
         <div id="logo">
@@ -117,14 +118,14 @@
           <li class="menu__item">
             <div class="menu__icon">
               <svg
-                width="20"
-                height="19"
-                viewBox="0 0 20 19"
+                width="24"
+                height="20"
+                viewBox="0 0 24 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M18 4H15.82C15.93 3.69 16 3.35 16 3C16 1.34 14.66 0 13 0C11.95 0 11.04 0.54 10.5 1.35L10 2.02L9.5 1.34C8.96 0.54 8.05 0 7 0C5.34 0 4 1.34 4 3C4 3.35 4.07 3.69 4.18 4H2C0.89 4 0.00999999 4.89 0.00999999 6L0 17C0 18.11 0.89 19 2 19H18C19.11 19 20 18.11 20 17V6C20 4.89 19.11 4 18 4ZM13 2C13.55 2 14 2.45 14 3C14 3.55 13.55 4 13 4C12.45 4 12 3.55 12 3C12 2.45 12.45 2 13 2ZM7 2C7.55 2 8 2.45 8 3C8 3.55 7.55 4 7 4C6.45 4 6 3.55 6 3C6 2.45 6.45 2 7 2ZM18 17H2V15H18V17ZM18 12H2V6H7.08L5 8.83L6.62 10L9 6.76L10 5.4L11 6.76L13.38 10L15 8.83L12.92 6H18V12Z"
+                  d="M2 4H0V9H0.01L0 18C0 19.1 0.9 20 2 20H20V18H2V4ZM22 2H14L12 0H6C4.9 0 4.01 0.9 4.01 2L4 14C4 15.1 4.9 16 6 16H22C23.1 16 24 15.1 24 14V4C24 2.9 23.1 2 22 2ZM7 13L11.5 7L15 11.51L17.5 8.5L21 13H7Z"
                   fill="white"
                 />
               </svg>
@@ -175,7 +176,7 @@
       <!-- MAIN -->
       <div id="main">
         <!-- HEADER -->
-        <div class="header">
+        <div class="header" id="header">
           <div class="search">
             <i class="fa-solid fa-magnifying-glass search__icon"></i>
             <input
@@ -201,6 +202,7 @@
         <div class="info">
           <div class="info__cover">
             <img src="./img/info_cover.png" alt="People" />
+            <div class="info__edit-cover">Edit Cover Photo</div>
             <div class="info__avt">
               <img src="./img/user_img.png" alt="Charles Deo" />
             </div>
@@ -227,6 +229,7 @@
               </div>
               <p class="action__follow">Follow</p>
               <p class="action__shedule">Shedule a meeting</p>
+              <p class="action__edit-profile">Edit Profile</p>
             </div>
           </div>
         </div>
@@ -327,11 +330,375 @@
               </li>
             </ul>
           </div>
-          <div class="posts"></div>
-          <div class="contact"></div>
+
+          <!-- START POSTS -->
+          <div class="posts">
+            <ul class="header">
+              <li class="header__item" data-index="0">
+                <span>Followers</span>
+              </li>
+              <li class="header__item" data-index="1">
+                <span>Following</span>
+              </li>
+              <li class="header__item header__item--selected" data-index="2">
+                <span>Posts</span>
+              </li>
+            </ul>
+            <div class="container">
+              <div class="post">
+                <div class="post__header">
+                  <div class="owner">
+                    <div class="owner__image">
+                      <img src="./img/user_img.png" alt="Owner of the post" />
+                    </div>
+                    <div class="owner__info">
+                      <p class="owner__name">Charles Deo</p>
+                      <p class="owner__public">15mins ago</p>
+                    </div>
+                  </div>
+                  <div class="post__action">
+                    <svg
+                      width="16"
+                      height="4"
+                      viewBox="0 0 16 4"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 0C0.9 0 0 0.9 0 2C0 3.1 0.9 4 2 4C3.1 4 4 3.1 4 2C4 0.9 3.1 0 2 0ZM14 0C12.9 0 12 0.9 12 2C12 3.1 12.9 4 14 4C15.1 4 16 3.1 16 2C16 0.9 15.1 0 14 0ZM8 0C6.9 0 6 0.9 6 2C6 3.1 6.9 4 8 4C9.1 4 10 3.1 10 2C10 0.9 9.1 0 8 0Z"
+                        fill="#490057"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="post__image">
+                  <img src="./img/post_img.png" alt="A man in a gentle suit" />
+                </div>
+                <div class="post__title">
+                  <p class="title__name">Charles Deo</p>
+                  <p class="title__desc">New Blazer out here... $500!!!!!!</p>
+                </div>
+                <div class="post__react">
+                  <div class="react__fav">
+                    <svg
+                      width="24"
+                      height="22"
+                      viewBox="0 0 24 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.25 0.5C15.22 0.5 13.2717 1.445 12 2.93833C10.7283 1.445 8.78 0.5 6.75 0.5C3.15666 0.5 0.333328 3.32333 0.333328 6.91667C0.333328 11.3267 4.3 14.92 10.3083 20.38L12 21.9083L13.6917 20.3683C19.7 14.92 23.6667 11.3267 23.6667 6.91667C23.6667 3.32333 20.8433 0.5 17.25 0.5ZM12.1167 18.6417L12 18.7583L11.8833 18.6417C6.32999 13.6133 2.66666 10.2883 2.66666 6.91667C2.66666 4.58333 4.41666 2.83333 6.75 2.83333C8.54666 2.83333 10.2967 3.98833 10.915 5.58667H13.0967C13.7033 3.98833 15.4533 2.83333 17.25 2.83333C19.5833 2.83333 21.3333 4.58333 21.3333 6.91667C21.3333 10.2883 17.67 13.6133 12.1167 18.6417Z"
+                        fill="#A303A0"
+                      />
+                    </svg>
+                    <span>1,498</span>
+                  </div>
+                  <div class="react__comment">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.3333 0.333313H2.66668C1.38334 0.333313 0.333344 1.38331 0.333344 2.66665V23.6666L5.00001 19H21.3333C22.6167 19 23.6667 17.95 23.6667 16.6666V2.66665C23.6667 1.38331 22.6167 0.333313 21.3333 0.333313ZM21.3333 16.6666H5.00001L2.66668 19V2.66665H21.3333V16.6666Z"
+                        fill="#A303A0"
+                      />
+                    </svg>
+                    <span>3,000</span>
+                  </div>
+                </div>
+
+                <!-- START COMMENTS -->
+                <div class="comments comments--hide">
+                  <div class="comment__input">
+                    <div class="user-image">
+                      <img src="./img/user_img.png" alt="Comment owner" />
+                    </div>
+                    <div class="input-box">
+                      <input type="text" placeholder="Write your comment..." />
+                      <svg
+                        width="20"
+                        height="18"
+                        viewBox="0 0 20 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.9 17.4L19.35 9.92002C20.16 9.57002 20.16 8.43002 19.35 8.08002L1.9 0.600017C1.24 0.310017 0.51 0.800017 0.51 1.51002L0.5 6.12002C0.5 6.62002 0.87 7.05002 1.37 7.11002L15.5 9.00002L1.37 10.88C0.87 10.95 0.5 11.38 0.5 11.88L0.51 16.49C0.51 17.2 1.24 17.69 1.9 17.4Z"
+                          fill="#A303A0"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="comment comment--short">
+                    <div class="comment__avt">
+                      <img src="./img/Beckam.png" alt="" />
+                    </div>
+                    <div class="comment__content">
+                      <div class="comment__box">
+                        <p class="comment__name">Beckham</p>
+                        <p class="comment__text">Nice!!! wAY UGDUY</p>
+                      </div>
+                      <div class="comment__react">
+                        <p class="comment__like">Like</p>
+                        <p class="comment__reply">Reply</p>
+                        <p class="comment__public">1h</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comment">
+                    <div class="comment__avt">
+                      <img src="./img/Kente.png" alt="" />
+                    </div>
+                    <div class="comment__content">
+                      <div class="comment__box">
+                        <p class="comment__name">Kante</p>
+                        <p class="comment__text">
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, to
+                        </p>
+                      </div>
+                      <div class="comment__react">
+                        <p class="comment__like">Like</p>
+                        <p class="comment__reply">Reply</p>
+                        <p class="comment__public">2h</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comments__more">View more comments</div>
+                </div>
+                <!-- END COMMENTS -->
+              </div>
+              <div class="post">
+                <div class="post__header">
+                  <div class="owner">
+                    <div class="owner__image">
+                      <img src="./img/user_img.png" alt="Owner of the post" />
+                    </div>
+                    <div class="owner__info">
+                      <p class="owner__name">Charles Deo</p>
+                      <p class="owner__public">15mins ago</p>
+                    </div>
+                  </div>
+                  <div class="post__action">
+                    <svg
+                      width="16"
+                      height="4"
+                      viewBox="0 0 16 4"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 0C0.9 0 0 0.9 0 2C0 3.1 0.9 4 2 4C3.1 4 4 3.1 4 2C4 0.9 3.1 0 2 0ZM14 0C12.9 0 12 0.9 12 2C12 3.1 12.9 4 14 4C15.1 4 16 3.1 16 2C16 0.9 15.1 0 14 0ZM8 0C6.9 0 6 0.9 6 2C6 3.1 6.9 4 8 4C9.1 4 10 3.1 10 2C10 0.9 9.1 0 8 0Z"
+                        fill="#490057"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="post__image">
+                  <img src="./img/post_img.png" alt="A man in a gentle suit" />
+                </div>
+                <div class="post__title">
+                  <p class="title__name">Charles Deo</p>
+                  <p class="title__desc">New Blazer out here... $500!!!!!!</p>
+                </div>
+                <div class="post__react">
+                  <div class="react__fav">
+                    <svg
+                      width="24"
+                      height="22"
+                      viewBox="0 0 24 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.25 0.5C15.22 0.5 13.2717 1.445 12 2.93833C10.7283 1.445 8.78 0.5 6.75 0.5C3.15666 0.5 0.333328 3.32333 0.333328 6.91667C0.333328 11.3267 4.3 14.92 10.3083 20.38L12 21.9083L13.6917 20.3683C19.7 14.92 23.6667 11.3267 23.6667 6.91667C23.6667 3.32333 20.8433 0.5 17.25 0.5ZM12.1167 18.6417L12 18.7583L11.8833 18.6417C6.32999 13.6133 2.66666 10.2883 2.66666 6.91667C2.66666 4.58333 4.41666 2.83333 6.75 2.83333C8.54666 2.83333 10.2967 3.98833 10.915 5.58667H13.0967C13.7033 3.98833 15.4533 2.83333 17.25 2.83333C19.5833 2.83333 21.3333 4.58333 21.3333 6.91667C21.3333 10.2883 17.67 13.6133 12.1167 18.6417Z"
+                        fill="#A303A0"
+                      />
+                    </svg>
+                    <span>1,498</span>
+                  </div>
+                  <div class="react__comment">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.3333 0.333313H2.66668C1.38334 0.333313 0.333344 1.38331 0.333344 2.66665V23.6666L5.00001 19H21.3333C22.6167 19 23.6667 17.95 23.6667 16.6666V2.66665C23.6667 1.38331 22.6167 0.333313 21.3333 0.333313ZM21.3333 16.6666H5.00001L2.66668 19V2.66665H21.3333V16.6666Z"
+                        fill="#A303A0"
+                      />
+                    </svg>
+                    <span>3,000</span>
+                  </div>
+                </div>
+                
+                <!-- START COMMENTS -->
+                <div class="comments comments--hide">
+                  <div class="comment__input">
+                    <div class="user-image">
+                      <img src="./img/user_img.png" alt="Comment owner" />
+                    </div>
+                    <div class="input-box">
+                      <input type="text" placeholder="Write your comment..." />
+                      <svg
+                        width="20"
+                        height="18"
+                        viewBox="0 0 20 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.9 17.4L19.35 9.92002C20.16 9.57002 20.16 8.43002 19.35 8.08002L1.9 0.600017C1.24 0.310017 0.51 0.800017 0.51 1.51002L0.5 6.12002C0.5 6.62002 0.87 7.05002 1.37 7.11002L15.5 9.00002L1.37 10.88C0.87 10.95 0.5 11.38 0.5 11.88L0.51 16.49C0.51 17.2 1.24 17.69 1.9 17.4Z"
+                          fill="#A303A0"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="comment comment--short">
+                    <div class="comment__avt">
+                      <img src="./img/Beckam.png" alt="" />
+                    </div>
+                    <div class="comment__content">
+                      <div class="comment__box">
+                        <p class="comment__name">Beckham</p>
+                        <p class="comment__text">Nice!!! wAY UGDUY</p>
+                      </div>
+                      <div class="comment__react">
+                        <p class="comment__like">Like</p>
+                        <p class="comment__reply">Reply</p>
+                        <p class="comment__public">1h</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comment">
+                    <div class="comment__avt">
+                      <img src="./img/Kente.png" alt="" />
+                    </div>
+                    <div class="comment__content">
+                      <div class="comment__box">
+                        <p class="comment__name">Kante</p>
+                        <p class="comment__text">
+                          Sed ut perspiciatis unde omnis iste natus error sit
+                          voluptatem accusantium doloremque laudantium, to
+                        </p>
+                      </div>
+                      <div class="comment__react">
+                        <p class="comment__like">Like</p>
+                        <p class="comment__reply">Reply</p>
+                        <p class="comment__public">2h</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comments__more">View more comments</div>
+                </div>
+                <!-- END COMMENTS -->
+              </div>
+            </div>
+          </div>
+          <!-- END POSTS -->
+
+          <!-- START CONTACT -->
+          <div class="contact">
+            <div class="con-extend">
+              <p class="con-extend__title">You might know</p>
+              <ul class="con-extend__list">
+                <li class="item">
+                  <div class="item__image" style="--color: #d5d3ff">
+                    <img
+                      src="./img/Eddie_Lobanovskiy.png"
+                      alt="Eddie Lobanovskiy"
+                    />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">Eddie Lobanovskiy</p>
+                    <p class="item__email">laboanovskiy@gmail.com</p>
+                  </div>
+                </li>
+                <li class="item">
+                  <div class="item__image" style="--color: #ee37ff33">
+                    <img src="./img/Alexey.png" alt="Eddie Lobanovskiy" />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">Alexey Stave</p>
+                    <p class="item__email">alexeyst@gmail.com</p>
+                  </div>
+                </li>
+                <li class="item">
+                  <div class="item__image" style="--color: #26c0e233">
+                    <img src="./img/Anton.png" alt="Eddie Lobanovskiy" />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">Anton Tkacheve</p>
+                    <p class="item__email">tkacheveanton@gmail.com</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="con-active">
+              <p class="con-active__title">Active</p>
+              <ul class="con-active__list">
+                <li class="item item--online">
+                  <div class="item__image" style="--color: #d5d3ff">
+                    <img src="./img/Shelby_Goode.png" alt="Eddie Lobanovskiy" />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">Shelby Goode</p>
+                    <p class="item__status">Online</p>
+                  </div>
+                  <p class="item__time">1 min ago</p>
+                </li>
+                <li class="item item--busy">
+                  <div class="item__image" style="--color: #ee37ff33">
+                    <img
+                      src="./img/Robert_Bacins.png"
+                      alt="Eddie Lobanovskiy"
+                    />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">Robert Bacins</p>
+                    <p class="item__status">Busy</p>
+                  </div>
+                  <p class="item__time">9 min ago</p>
+                </li>
+                <li class="item item--online">
+                  <div class="item__image" style="--color: #ff8f6b33">
+                    <img src="./img/John_Carilo.png" alt="Eddie Lobanovskiy" />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">John Carilo</p>
+                    <p class="item__status">Online</p>
+                  </div>
+                  <p class="item__time">15 min ago</p>
+                </li>
+                <li class="item item--online">
+                  <div class="item__image" style="--color: #605bff33">
+                    <img
+                      src="./img/Adriene_Watson.png"
+                      alt="Eddie Lobanovskiy"
+                    />
+                  </div>
+                  <div class="item__info">
+                    <p class="item__name">Adriene Watson</p>
+                    <p class="item__status">Online</p>
+                  </div>
+                  <p class="item__time">21 min ago</p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <!-- END CONTACT -->
       </div>
       <!-- END MAIN -->
+      <div id="switch">
+        <i class="fa-solid fa-rotate"></i>
+      </div>
     </div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 @use "color" as *;
 @use "user_image" as *;
-.header {
+#header.header {
   display: flex;
   flex-flow: row;
   width: 100%;
@@ -28,7 +28,7 @@
     }
 
     &__icon {
-      font-size: 14px;
+      font-size: 1.4rem;
       color: $purple49;
       position: absolute;
       top: 24px;
@@ -45,10 +45,10 @@
   &__img {
     margin-left: 12px;
     flex: 0 60px;
-    @include userImage($orange){
-        width: 60px;
-        height: 60px
-    };
+    @include userImage($orange) {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__text {
