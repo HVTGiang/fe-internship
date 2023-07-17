@@ -8,7 +8,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "style-profile": "sass src/scss/main-profile.scss public/main-profile.css --watch"
+    "style-profile": "sass src/scss/main-profile.scss public/main-profile.css --watch",
+    "style-edit-profile": "sass src/scss/main-profile-edit.scss public/main-profile-edit.css --watch"
   },
   "author": "",
   "license": "ISC",
