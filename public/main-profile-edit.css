@@ -365,6 +365,10 @@ body {
   flex-direction: column;
   align-items: flex-start;
   padding: 16px 116px 16px 61px;
+  margin-bottom: 100px;
+  /*
+      Color describing
+  */
 }
 .container .form__action {
   width: 100%;
@@ -404,6 +408,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 .container .form__input-group .form__input label {
   font-size: 1.6rem;
@@ -476,6 +481,185 @@ body {
   color: #515151;
   border-radius: 8px;
   border: 1px solid #515151;
+}
+.container .form__input-group .form__input .form__box#birthday {
+  max-width: 312px;
+  position: relative;
+}
+.container .form__input-group .form__input .form__box#birthday svg {
+  width: 40px;
+  height: 40px;
+  display: block;
+  position: absolute;
+  right: 15px;
+  bottom: 50%;
+  transform: translateY(50%);
+  padding: 10px 11px;
+  cursor: pointer;
+  overflow: visible;
+}
+.container .form__input-group .form__input .form__box#birthday svg:active, .container .form__input-group .form__input .form__box#birthday svg:hover {
+  background-color: #d5d5d5;
+  border-radius: 50%;
+}
+.container .form__input-group .form__input .form__box#birthday input::-webkit-inner-spin-button,
+.container .form__input-group .form__input .form__box#birthday input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+.container .form__input-group .form__input .form__box#birthday input {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #515151;
+  border: none;
+  max-width: 86px;
+}
+.container .form .calendar {
+  width: 360px;
+  position: absolute;
+  top: 100%;
+  z-index: 999;
+}
+.container .form .calendar__format {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #49454f;
+  margin: 4px 16px 8px;
+}
+.container .form .calendar__wrapper {
+  background-color: #ece6f0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+}
+.container .form .calendar header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 4px;
+}
+.container .form .calendar .select-group {
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+.container .form .calendar .select-group .wrapper.active .select i {
+  transform: rotateZ(180deg);
+}
+.container .form .calendar .select-group > i {
+  padding: 14px 16px;
+  color: #49454f;
+}
+.container .form .calendar .select-group .select {
+  padding: 10px 8px;
+  color: #49454f;
+  font-size: 1.4rem;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.container .form .calendar .select-group .select i {
+  font-size: 1rem;
+  color: #49454f;
+  margin-left: 8px;
+  padding: 7px 5px;
+  transform: rotateZ(0deg);
+  transition: all ease 0.2s;
+}
+.container .form .calendar .select-group .drop-list {
+  background-color: #d5d5d5;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 0.5px #ededed;
+  overflow-y: scroll;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  scroll-behavior: smooth;
+}
+.container .form .calendar .select-group .drop-list .option {
+  padding: 8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.container .form .calendar .select-group .drop-list .option:hover {
+  background-color: #ededed;
+}
+.container .form .calendar .select-group .drop-list .option--selected {
+  background-color: #a303a0;
+  color: #ffffff;
+}
+.container .form .calendar .select-group .drop-list .option--selected:hover {
+  background-color: #490057;
+  color: #ffffff;
+}
+.container .form .calendar .select-group .drop-list--hide {
+  display: none;
+}
+.container .form .calendar__space {
+  padding: 0 12px 4px;
+}
+.container .form .calendar__space ul {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  color: #1d1b20;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.container .form .calendar__space li {
+  width: 14.2857142857%;
+  text-align: center;
+  padding: 13px 10px;
+}
+.container .form .calendar__space .days li {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.container .form .calendar__space .days li::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: all ease 0.1s;
+}
+.container .form .calendar__space .days li:hover::before {
+  background-color: #d5d5d5;
+}
+.container .form .calendar__space .days li.inactive {
+  color: #49454f;
+}
+.container .form .calendar__space .days li.active {
+  color: #ffffff;
+}
+.container .form .calendar__space .days li.active::before {
+  background-color: #a303a0;
+}
+.container .form .calendar__action {
+  padding: 8px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.container .form .calendar__cancel, .container .form .calendar__ok {
+  padding: 10px 12px;
+  color: #9b9b9b;
+  font-weight: 500;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.container .form .calendar__ok {
+  color: #a303a0;
+}
+.container .form .calendar--hide {
+  display: none;
 }
 
 /*
