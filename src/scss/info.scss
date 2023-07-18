@@ -8,9 +8,7 @@
   border-radius: 10px;
   position: relative;
 
-  @media screen and (max-width: 768px) {
-    border-radius: 0;
-  }
+  
 
   &__cover {
     position: relative;
@@ -69,6 +67,16 @@
         height: 180px;
       }
       bottom: -100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid $white;
+    }
+    @media screen and (max-width: 415px) {
+      @include userImage($orange) {
+        width: 120px;
+        height: 120px;
+      }
+      bottom: -130%;
       left: 50%;
       transform: translate(-50%, -50%);
       border: 5px solid $white;
@@ -190,6 +198,19 @@
           }
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    border-radius: 0;
+  }
+  @media screen and (max-width: 415px) {
+    margin-top: 12px;
+    .info__edit-cover{
+      font-size: 1.2rem;
+      right: 20px;
+      bottom: 20px;
+      padding: 12px 16px;
     }
   }
 }

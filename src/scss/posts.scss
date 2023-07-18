@@ -6,10 +6,6 @@
   padding-top: 40px;
   background-color: $white;
 
-  @media screen and (max-width: 768px) {
-    border-radius: 0px;
-  }
-
   .header {
     list-style-type: none;
     padding: 0 47px 20px;
@@ -137,10 +133,22 @@
       }
     }
 
-    &:nth-last-child(1){
-      border: none
+    &:nth-last-child(1) {
+      border: none;
     }
 
     @import "comments";
+  }
+
+  @media screen and (max-width: 768px) {
+    border-radius: 0px;
+  }
+
+  @media screen and (max-width: 415px) {
+    padding-top: 20px;
+    .post{
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

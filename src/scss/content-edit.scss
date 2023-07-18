@@ -53,5 +53,17 @@
     }
   }
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    .profile {
+      max-width: none;
+      border-right: none;
+    }
+
+    .profile__up-image {
+      margin-top: 20px;
+    }
+  }
+
   @import "profile-form";
 }

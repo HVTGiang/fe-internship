@@ -27,6 +27,45 @@ body {
   flex: 0 218px;
   min-width: 218px;
   background-color: #490057;
+  transform: translateX(0);
+  transition: all ease 0.2s;
+}
+.modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: auto;
+  width: auto;
+  background-color: rgba(32, 32, 32, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  transform: translateX(0);
+  transition: all linear 0.25s;
+}
+
+.modal-background.hide {
+  z-index: 999;
+  opacity: 0;
+  transform: translateX(-100%);
+  backdrop-filter: blur(0);
+}
+
+@media screen and (max-width: 768px) {
+  #nav {
+    position: fixed;
+    z-index: 9999;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 218px;
+  }
+  #nav.hide {
+    transform: translateX(-100%);
+  }
 }
 #nav #logo {
   display: flex;
@@ -124,11 +163,29 @@ body {
   flex-flow: row;
   width: 100%;
 }
+@media screen and (max-width: 768px) {
+  #header.header {
+    padding-right: 16px;
+  }
+}
 #header.header .icon {
-  padding: 8px;
+  width: 62px;
+  height: 62px;
+  padding: 16px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 #header.header .icon i {
   display: block;
+  font-size: 2.4rem;
+  color: #515151;
+}
+@media screen and (max-width: 768px) {
+  #header.header .icon {
+    display: flex;
+  }
 }
 #header.header .search {
   position: relative;
@@ -199,6 +256,12 @@ body {
   margin-top: 22px;
   background-color: #ffffff;
   border-radius: 10px;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .info {
+    border-radius: 0;
+  }
 }
 .info__cover {
   position: relative;
@@ -211,6 +274,11 @@ body {
   max-height: 280px;
   object-fit: cover;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .info__cover img {
+    border-radius: 0;
+  }
 }
 .info__edit-cover {
   border-radius: 10px;
@@ -249,10 +317,37 @@ body {
   height: 100%;
   object-fit: cover;
 }
+@media screen and (max-width: 768px) {
+  .info__avt {
+    width: 180px;
+    height: 180px;
+    background-color: #fbb03b;
+    border-radius: 50%;
+    bottom: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #ffffff;
+  }
+  .info__avt img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .info__footer {
   display: flex;
   padding: 30px 0;
   justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .info__footer {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px 56px;
+    margin-top: 70px;
+  }
 }
 .info__text {
   color: #a303a0;
@@ -266,10 +361,23 @@ body {
   font-weight: 400;
   font-size: 1.6rem;
 }
+@media screen and (max-width: 768px) {
+  .info__text {
+    margin-left: 0px;
+    text-align: center;
+  }
+}
 .info__action {
   display: flex;
   align-items: center;
   margin-right: 54px;
+  gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .info__action {
+    justify-content: center;
+    margin-right: 0px;
+  }
 }
 .info__action .action__mess {
   display: flex;
@@ -292,7 +400,6 @@ body {
   background-color: #a303a0;
   border-radius: 10px;
   color: #ffffff;
-  margin-left: 10px;
 }
 .info__action .action__shedule, .info__action .action__edit-profile {
   font-size: 1.6rem;
@@ -302,7 +409,6 @@ body {
   border-radius: 10px;
   color: #a303a0;
   border: 1px solid #a303a0;
-  margin-left: 10px;
 }
 .info__action .action__edit-profile {
   padding: 12px 46px;
@@ -377,6 +483,18 @@ body {
 }
 .container .profile__up-image:active {
   background-color: #ededed;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .container .profile {
+    max-width: none;
+    border-right: none;
+  }
+  .container .profile__up-image {
+    margin-top: 20px;
+  }
 }
 .container .form {
   width: 100%;
@@ -510,7 +628,7 @@ body {
   top: 6px;
   left: 6px;
   border-radius: 100%;
-  z-index: 999;
+  z-index: 888;
   transition: all ease 0.2s;
 }
 .container .form__input-group .form__input.radio .radio-container input:not(:checked) ~ span::before {
@@ -566,6 +684,15 @@ body {
   color: #515151;
   border: none;
   max-width: 86px;
+}
+@media screen and (max-width: 768px) {
+  .container .form {
+    padding: 32px 60px;
+    gap: 20px;
+  }
+  .container .form .form__action {
+    order: 2;
+  }
 }
 .container .form .calendar {
   width: 360px;
@@ -722,6 +849,12 @@ body {
   flex: 1;
   background-color: #f7f7f8;
   padding: 20px 32px 0;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  #main {
+    padding: 20px 0px 0;
+  }
 }
 
 /*
@@ -731,6 +864,11 @@ body {
   display: flex;
   flex-direction: row;
   transition: all linear 0.3s;
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 #root #switch {
   width: 40px;

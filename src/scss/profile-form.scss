@@ -30,10 +30,10 @@
     cursor: pointer;
   }
 
-  &__cancel:hover{
+  &__cancel:hover {
     background-color: $grey;
   }
-  &__cancel:active{
+  &__cancel:active {
     background-color: $grey200;
   }
 
@@ -50,7 +50,7 @@
     background-color: $purpleA3;
   }
 
-  &__save:active{
+  &__save:active {
     background-color: $purple49;
   }
 
@@ -146,7 +146,7 @@
             top: 6px;
             left: 6px;
             border-radius: 100%;
-            z-index: 999;
+            z-index: 888;
             transition: all ease 0.2s;
           }
 
@@ -209,6 +209,14 @@
           max-width: 86px;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 32px 60px;
+    gap: 20px;
+    .form__action {
+      order: 2;
     }
   }
 

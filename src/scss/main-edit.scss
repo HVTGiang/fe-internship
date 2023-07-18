@@ -11,4 +11,10 @@
   flex: 1;
   background-color: $grey;
   padding: 20px 32px 0;
+
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 0px 0;
+  }
 }

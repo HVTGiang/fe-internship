@@ -8,10 +8,6 @@
   color: $purpleA3;
   margin-right: 29px;
 
-  @media screen and (max-width: 768px) {
-    margin: 30px;
-  }
-
   &__title {
     font-size: 2rem;
     font-weight: 700;
@@ -45,6 +41,18 @@
           object-fit: cover;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 30px;
+  }
+
+  @media screen and (max-width: 415px) {
+    padding: 20px 32px;
+    margin: 20px;
+    &__title {
+      text-align: center;
     }
   }
 }
