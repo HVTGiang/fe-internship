@@ -8,6 +8,46 @@
   flex: 0 218px;
   min-width: 218px;
   background-color: $purple49;
+  transform: translateX(0);
+  transition: all ease 0.2s;
+
+  @at-root .modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: auto;
+    background-color: rgb(32 32 32 / 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    transform: translateX(0);
+    transition: all linear 0.25s;
+  }
+
+  @at-root .modal-background.hide {
+    z-index: 999;
+    opacity: 0;
+    transform: translateX(-100%);
+    backdrop-filter: blur(0);
+
+  }
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    z-index: 9999;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 218px;
+
+    &.hide {
+      transform: translateX(-100%);
+    }
+  }
 
   #logo {
     display: flex;

@@ -4,6 +4,13 @@
 .contact {
   flex: 0 260px;
   margin-left: 29px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    margin: 30px;
+    flex: 0;
+  }
 
   .con-extend {
     background-color: $white;

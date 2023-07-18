@@ -8,6 +8,10 @@
   color: $purpleA3;
   margin-right: 29px;
 
+  @media screen and (max-width: 768px) {
+    margin: 30px;
+  }
+
   &__title {
     font-size: 2rem;
     font-weight: 700;

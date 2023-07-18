@@ -20,7 +20,8 @@
   <body>
     <div id="root" class="visitor">
       <!-- NAV SIDE BAR -->
-      <nav id="nav">
+      <nav id="nav" class="hide">
+        
         <div id="logo">
           <img src="./img/logo.png" alt="Logo of 3MM" />
           <span>3MM</span>
@@ -171,12 +172,20 @@
         </ul>
         <!--END MENU -->
       </nav>
+      <div class="modal-background hide"></div>
+
       <!-- END NAV SIDE BAR -->
 
       <!-- MAIN -->
       <div id="main">
         <!-- HEADER -->
         <div class="header" id="header">
+          <label for="toggle-nav">
+            <div class="icon">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+          </label>
+          <input type="checkbox" hidden id="toggle-nav" />
           <div class="search">
             <i class="fa-solid fa-magnifying-glass search__icon"></i>
             <input
@@ -537,7 +546,7 @@
                     <span>3,000</span>
                   </div>
                 </div>
-                
+
                 <!-- START COMMENTS -->
                 <div class="comments comments--hide">
                   <div class="comment__input">
