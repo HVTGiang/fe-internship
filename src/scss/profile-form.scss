@@ -27,6 +27,14 @@
     color: $purpleA3;
     border: 1px solid $purpleA3;
     padding: 10.5px 39px;
+    cursor: pointer;
+  }
+
+  &__cancel:hover{
+    background-color: $grey;
+  }
+  &__cancel:active{
+    background-color: $grey200;
   }
 
   &__save {
@@ -34,6 +42,16 @@
     color: $white;
     margin-left: 12px;
     padding: 11px 47px;
+    cursor: pointer;
+    background-color: $purpleA3;
+  }
+
+  &__save:hover {
+    background-color: $purpleA3;
+  }
+
+  &__save:active{
+    background-color: $purple49;
   }
 
   &__container {
@@ -53,6 +71,29 @@
       flex-direction: column;
       align-items: flex-start;
       position: relative;
+
+      &.invalid {
+        label {
+          color: $orange;
+        }
+        .form__box {
+          border: 2px solid $orange;
+        }
+
+        .input__error {
+          display: block;
+        }
+      }
+
+      .input__error {
+        color: $orange;
+        font-size: 1.3rem;
+        padding-top: 4px;
+        position: absolute;
+        bottom: -25%;
+        right: 0;
+        display: none;
+      }
 
       label {
         font-size: 1.6rem;
@@ -134,7 +175,7 @@
         border: 1px solid $grey600;
       }
 
-      .form__box#birthday {
+      .form__box.birthday {
         max-width: 312px;
         position: relative;
         svg {
@@ -149,7 +190,8 @@
           cursor: pointer;
           overflow: visible;
         }
-        svg:active, svg:hover {
+        svg:active,
+        svg:hover {
           background-color: $grey300;
           border-radius: 50%;
         }

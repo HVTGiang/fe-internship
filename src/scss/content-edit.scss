@@ -44,6 +44,13 @@
       border-radius: 8px;
       border: 1px solid $purpleA3;
     }
+
+    &__up-image:hover {
+      background-color: $grey;
+    }
+    &__up-image:active {
+      background-color: $grey200;
+    }
   }
 
   @import "profile-form";

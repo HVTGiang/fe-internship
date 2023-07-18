@@ -124,6 +124,12 @@ body {
   flex-flow: row;
   width: 100%;
 }
+#header.header .icon {
+  padding: 8px;
+}
+#header.header .icon i {
+  display: block;
+}
 #header.header .search {
   position: relative;
   flex-grow: 1;
@@ -216,6 +222,13 @@ body {
   position: absolute;
   right: 54px;
   bottom: 36px;
+  cursor: pointer;
+}
+.info__edit-cover:hover {
+  background-color: #f7f7f8;
+}
+.info__edit-cover:active {
+  background-color: #ededed;
 }
 .visitor .info__edit-cover {
   display: none;
@@ -359,6 +372,12 @@ body {
   border-radius: 8px;
   border: 1px solid #a303a0;
 }
+.container .profile__up-image:hover {
+  background-color: #f7f7f8;
+}
+.container .profile__up-image:active {
+  background-color: #ededed;
+}
 .container .form {
   width: 100%;
   display: flex;
@@ -386,12 +405,27 @@ body {
   color: #a303a0;
   border: 1px solid #a303a0;
   padding: 10.5px 39px;
+  cursor: pointer;
+}
+.container .form__cancel:hover {
+  background-color: #f7f7f8;
+}
+.container .form__cancel:active {
+  background-color: #ededed;
 }
 .container .form__save {
   background-color: #d5d5d5;
   color: #ffffff;
   margin-left: 12px;
   padding: 11px 47px;
+  cursor: pointer;
+  background-color: #a303a0;
+}
+.container .form__save:hover {
+  background-color: #a303a0;
+}
+.container .form__save:active {
+  background-color: #490057;
 }
 .container .form__container {
   width: 100%;
@@ -409,6 +443,24 @@ body {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+}
+.container .form__input-group .form__input.invalid label {
+  color: #fbb03b;
+}
+.container .form__input-group .form__input.invalid .form__box {
+  border: 2px solid #fbb03b;
+}
+.container .form__input-group .form__input.invalid .input__error {
+  display: block;
+}
+.container .form__input-group .form__input .input__error {
+  color: #fbb03b;
+  font-size: 1.3rem;
+  padding-top: 4px;
+  position: absolute;
+  bottom: -25%;
+  right: 0;
+  display: none;
 }
 .container .form__input-group .form__input label {
   font-size: 1.6rem;
@@ -482,11 +534,11 @@ body {
   border-radius: 8px;
   border: 1px solid #515151;
 }
-.container .form__input-group .form__input .form__box#birthday {
+.container .form__input-group .form__input .form__box.birthday {
   max-width: 312px;
   position: relative;
 }
-.container .form__input-group .form__input .form__box#birthday svg {
+.container .form__input-group .form__input .form__box.birthday svg {
   width: 40px;
   height: 40px;
   display: block;
@@ -498,16 +550,17 @@ body {
   cursor: pointer;
   overflow: visible;
 }
-.container .form__input-group .form__input .form__box#birthday svg:active, .container .form__input-group .form__input .form__box#birthday svg:hover {
+.container .form__input-group .form__input .form__box.birthday svg:active,
+.container .form__input-group .form__input .form__box.birthday svg:hover {
   background-color: #d5d5d5;
   border-radius: 50%;
 }
-.container .form__input-group .form__input .form__box#birthday input::-webkit-inner-spin-button,
-.container .form__input-group .form__input .form__box#birthday input::-webkit-calendar-picker-indicator {
+.container .form__input-group .form__input .form__box.birthday input::-webkit-inner-spin-button,
+.container .form__input-group .form__input .form__box.birthday input::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
-.container .form__input-group .form__input .form__box#birthday input {
+.container .form__input-group .form__input .form__box.birthday input {
   font-size: 1.6rem;
   font-weight: 400;
   color: #515151;

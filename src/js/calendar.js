@@ -1,17 +1,21 @@
+const inputBox = document.querySelector("form input[name='birthday']")
+
+
 // Final selected from user (initialing)
-var chosenDate = new Date("1980 Jun 26")
+var chosenDate = new Date(inputBox.value)
+
 
 // Current selected on calendar
 var currentSelect = new Date(chosenDate.getTime())
 
-const inputBirthday = document.querySelector(".form__box#birthday")
+const inputBirthday = document.querySelector(".form__box.birthday")
 inputBirthday.querySelector("span").innerHTML = dateString(chosenDate)
 
 const calendar = document.querySelector(".form__input .calendar")
 
-inputBirthday.querySelector(".form__box#birthday svg").onclick = (e) => {
+inputBirthday.querySelector(".form__box.birthday svg").onclick = (e) => {
     e.stopPropagation()
-    inputBirthday.querySelector(".form__box#birthday svg").classList.toggle("active")
+    inputBirthday.querySelector(".form__box.birthday svg").classList.toggle("active")
     currentSelect = new Date(chosenDate.getTime())
     calendar.classList.toggle("calendar--hide")
     renderCalendar()
@@ -184,7 +188,6 @@ dropListD.onclick = (e) => {
     let selectedDate = new Date(Number(selected.dataset.value))
     currentSelect = selectedDate
     renderCalendar()
-
 }
 
 // Render calendar
@@ -192,8 +195,6 @@ function renderCalendar() {
     renderMonth()
     renderYear()
     renderDate()
-    console.log("chosen: " + chosenDate);
-    console.log("current: " + currentSelect);
 }
 
 
@@ -201,16 +202,19 @@ function renderCalendar() {
 const cancelBtn = calendar.querySelector(".calendar__cancel")
 cancelBtn.onclick = () => {
     calendar.classList.add("calendar--hide")
-    inputBirthday.querySelector(".form__box#birthday svg").classList.remove("active")
+    inputBirthday.querySelector(".form__box.birthday svg").classList.remove("active")
 }
 
 // Save currentDate -> chosenDate
 const saveBtn = calendar.querySelector(".calendar__ok")
+
+
 saveBtn.onclick = () => {
     chosenDate = new Date(currentSelect.getTime())
+    inputBox.value = toInputDateFormat(chosenDate)
     calendar.classList.add("calendar--hide")
     inputBirthday.querySelector("span").innerHTML = dateString(chosenDate)
-    inputBirthday.querySelector(".form__box#birthday svg").classList.remove("active")
+    inputBirthday.querySelector(".form__box.birthday svg").classList.remove("active")
 }
 
 function dateString(chosenDate) {
@@ -221,4 +225,20 @@ function dateString(chosenDate) {
     return `${month}/${date}/${year}`
 }
 
+function toInputDateFormat(chosenDate) {
+    var month = `${chosenDate.getMonth() + 1 <= 9 ? "0" : ""}${chosenDate.getMonth() + 1}`
+    var date = `${chosenDate.getDate() <= 9 ? "0" : ""}${chosenDate.getDate()}`
+    var year = `${chosenDate.getFullYear()}`
+
+    return `${year}-${month}-${date}`
+}
+
+function setValue(value) {
+    inputBox.value = value
+    chosenDate = new Date(inputBox.value)
+    currentSelect = new Date(chosenDate.getTime())
+    inputBirthday.querySelector("span").innerHTML = dateString(chosenDate)
+}
+
+export default setValue
 

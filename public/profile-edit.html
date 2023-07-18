@@ -20,8 +20,8 @@
     ></script>
     <link rel="stylesheet" href="./main-profile-edit.css" />
     <script src="../src/js/main.js" defer></script>
-    <script src="../src/js/calendar.js" defer></script>
-    <script src="../src/js/validate.js" defer></script>
+    <script src="../src/js/calendar.js" defer type="module"></script>
+    <script src="../src/js/validate.js" defer type="module"></script>
   </head>
   <body>
     <div id="root" class="">
@@ -227,7 +227,7 @@
               <div class="form__cancel">Cancel</div>
               <div class="form__save">Save</div>
             </div>
-            <form action="" class="form__container">
+            <form action="" class="form__container" id="profile-form">
               <div class="form__input-group">
                 <div class="form__input">
                   <label for="first-name">First Name</label>
@@ -235,10 +235,12 @@
                     class="form__box"
                     type="text"
                     value="Deo"
-                    placeholder="Your first name"
+                    placeholder="Fill your first name"
                     id="first-name"
                     name="firstName"
+                    rules="required"
                   />
+                  <span class="input__error">This is error!</span>
                 </div>
                 <div class="form__input">
                   <label for="last-name">Last Name</label>
@@ -246,10 +248,12 @@
                     class="form__box"
                     type="text"
                     value="Charles"
-                    placeholder="Your last name"
+                    placeholder="Fill your last name"
                     id="last-name"
                     name="lastName"
+                    rules="required"
                   />
+                  <span class="input__error"></span>
                 </div>
               </div>
               <div class="form__input-group">
@@ -259,10 +263,12 @@
                     class="form__box"
                     type="text"
                     value="UI/UX Designer"
-                    placeholder="Fil your title"
+                    placeholder="Fill your title"
                     id="role"
                     name="role"
+                    rules="required"
                   />
+                  <span class="input__error"></span>
                 </div>
               </div>
               <div class="form__input-group">
@@ -277,6 +283,7 @@
                         id="gender"
                         name="gender"
                         checked
+                        rules="required"
                       />
                       <span>Gender</span>
                     </label>
@@ -287,6 +294,7 @@
                         value="female"
                         id="female"
                         name="gender"
+                        rules="required"
                       />
                       <span>Female</span>
                     </label>
@@ -297,16 +305,26 @@
                         value="other"
                         id="other"
                         name="gender"
+                        rules="required"
                       />
                       <span>Other</span>
                     </label>
                   </div>
+                  <span class="input__error"></span>
                 </div>
               </div>
               <div class="form__input-group">
                 <div class="form__input" id="input-calendar">
                   <label for="birthday">Birthday</label>
-                  <div class="form__box" id="birthday" name="birthday">
+                  <div class="form__box birthday" name="birthday">
+                    <input
+                      hidden
+                      type="date"
+                      name="birthday"
+                      id="birthday"
+                      rules="required"
+                      value="1980-06-26"
+                    />
                     <span></span>
                     <svg
                       class="active"
@@ -385,6 +403,7 @@
                       </div>
                     </div>
                   </div>
+                  <span class="input__error"></span>
                 </div>
               </div>
               <div class="form__input-group">
@@ -394,10 +413,12 @@
                     class="form__box"
                     type="text"
                     value="2239 Hog Camp Road, Schaumburg"
-                    placeholder="Your address"
+                    placeholder="Fill your address"
                     id="address"
                     name="address"
+                    rules="required"
                   />
+                  <span class="input__error"></span>
                 </div>
               </div>
               <div class="form__input-group">
@@ -407,10 +428,12 @@
                     class="form__box"
                     type="email"
                     value="charles5182@ummoh.com"
-                    placeholder="Your email"
+                    placeholder="Fill your email"
                     id="email"
                     name="email"
+                    rules="required email"
                   />
+                  <span class="input__error"></span>
                 </div>
               </div>
               <div class="form__input-group">
@@ -420,10 +443,12 @@
                     class="form__box"
                     type="text"
                     value="33757005467"
-                    placeholder="Your phone"
+                    placeholder="Fill your phone"
                     id="phone"
                     name="phone"
+                    rules="required phone"
                   />
+                  <span class="input__error"></span>
                 </div>
               </div>
             </form>
