@@ -37,7 +37,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 selectM.onclick = () => {
     dropListM.classList.toggle("drop-list--hide")
     selectM.classList.toggle("active")
-    selectedItem = dropListM.querySelector(".option--selected")
+    var selectedItem = dropListM.querySelector(".option--selected")
     dropListM.scrollTop = selectedItem.offsetTop
 }
 
@@ -79,7 +79,7 @@ const [prevY, nextY] = selectGroupY.querySelectorAll(".setting-year")
 selectY.onclick = () => {
     dropListY.classList.toggle("drop-list--hide")
     selectY.classList.toggle("active")
-    selectedItem = dropListY.querySelector(".option--selected")
+    var selectedItem = dropListY.querySelector(".option--selected")
     dropListY.scrollTop = selectedItem.offsetTop
 }
 
