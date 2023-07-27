@@ -1,0 +1,12 @@
+export { MessageSVG } from "./message_svg";
+export { ProfileSVG } from "./profile_svg";
+export { PurchaseSVG } from "./purchase_svg";
+export { ReturnSVG } from "./return_svg";
+export { SettingsSVG } from "./settings_svg";
+export { AnalyticsSVG } from "./analytics_svg";
+export { GallerySVG } from "./gallery_svg";
+export { HomeSVG } from "./home_svg";
+export { BirthdaySVG } from "./birthday_svg";
+export { AddressSVG } from "./address_svg";
+export { MailSVG } from "./mail_svg";
+export { PhoneSVG } from "./phone_svg";

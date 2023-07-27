@@ -1,0 +1,55 @@
+@use "../../assets/style/index.scss" as *;
+
+.posts {
+  flex: 1;
+  border-radius: 10px;
+  padding-top: 40px;
+  background-color: $white;
+
+  .header {
+    list-style-type: none;
+    padding: 0 47px 20px;
+    font-size: 2rem;
+    font-weight: 400;
+    color: $purpleA3;
+    border-bottom: 1px solid #0302291a;
+    display: flex;
+    gap: 20px;
+
+    &__item {
+      display: block;
+      padding-right: 10px;
+      transition: all linear 0.2s;
+      min-width: 120px;
+
+      &--selected {
+        font-weight: 800;
+
+        &::after {
+          content: "";
+          width: 20px;
+          height: 4px;
+          border-radius: 5px;
+          background-color: $orange;
+          display: block;
+        }
+      }
+
+      &:hover {
+        font-weight: 700;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    border-radius: 0px;
+  }
+
+  @media screen and (max-width: 415px) {
+    padding-top: 20px;
+    .post {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
