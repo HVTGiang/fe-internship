@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./style.scss";
 
 export default function Header() {
+
   return (
     <div className="header" id="header">
       <label htmlFor="toggle-nav">

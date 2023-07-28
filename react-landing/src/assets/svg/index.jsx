@@ -10,3 +10,8 @@ export { BirthdaySVG } from "./birthday_svg";
 export { AddressSVG } from "./address_svg";
 export { MailSVG } from "./mail_svg";
 export { PhoneSVG } from "./phone_svg";
+export { CommentSVG } from "./comment_svg";
+export { LikeSVG } from "./like_svg";
+export { MoreSVG } from "./more_svg";
+export { SendSVG } from "./sendcomment_svg";
+export { FilledLikeSVG } from "./filledlike_svg";

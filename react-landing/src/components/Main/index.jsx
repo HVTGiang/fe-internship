@@ -1,3 +1,4 @@
+import EditProfile from "../../features/EditProFile";
 import About from "../About";
 import ExtendContact from "../ExtendContact";
 import Header from "../Header";
@@ -10,13 +11,14 @@ export default function Main() {
     <div id="main">
       <Header />
       <Info />
-      <div className="content-group">
+      {/* <div className="content-group">
         <About />
         <Posts />
         <div className="contact">
           <ExtendContact />
         </div>
-      </div>
+      </div> */}
+      <EditProfile />
     </div>
   );
 }
