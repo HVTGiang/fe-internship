@@ -47,9 +47,9 @@
     background-color: $grey200;
   }
 
-  @at-root .visitor .info__edit-cover {
-    display: none;
-  }
+  // @at-root .visitor .info__edit-cover {
+  //   display: none;
+  // }
 
   &__avt {
     @include userImage($orange) {
@@ -147,6 +147,7 @@
         background-color: $purpleA3;
         color: $white;
         border-radius: 50%;
+        cursor: pointer;
 
         svg {
           width: 20px;
@@ -160,6 +161,7 @@
         background-color: $purpleA3;
         border-radius: 10px;
         color: $white;
+        cursor: pointer;
       }
 
       &__shedule,
@@ -171,32 +173,34 @@
         border-radius: 10px;
         color: $purpleA3;
         border: 1px solid $purpleA3;
+        cursor: pointer;
+
       }
 
       &__edit-profile {
         padding: 12px 46px;
       }
 
-      &__mess,
-      &__follow,
-      &__shedule {
-        display: none;
-      }
+      // &__mess,
+      // &__follow,
+      // &__shedule {
+      //   display: none;
+      // }
 
-      @at-root .visitor {
-        .action {
-          &__edit-profile {
-            display: none;
-          }
-          &__mess {
-            display: flex;
-          }
-          &__follow,
-          &__shedule {
-            display: block;
-          }
-        }
-      }
+      // @at-root .visitor {
+      //   .action {
+      //     &__edit-profile {
+      //       display: none;
+      //     }
+      //     &__mess {
+      //       display: flex;
+      //     }
+      //     &__follow,
+      //     &__shedule {
+      //       display: block;
+      //     }
+      //   }
+      // }
     }
   }
 

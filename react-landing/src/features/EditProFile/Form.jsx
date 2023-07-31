@@ -1,24 +1,38 @@
-import { useState } from "react";
-import Calendar from "./Calendar";
+import { useEffect, useState } from "react";
+import Calendar from "./Calendar.jsx";
 import CalendarSVG from "./CalendarSVG";
+import calendarHandler from "./calendarHandler.js";
+import validator from "./validate.js";
 
-export default function Form() {
-  const [data, setData] = useState({
-    firstName: "Deo",
-    lastName: "Charles",
-    title: "UI/UX Designer",
-    gender: "male",
-    birthday: "1980-06-26",
-    address: "2239 Hog Camp Road, Schaumburg",
-    email: "charles5182@ummoh.com",
-    phone: "33757005467",
-  });
+export default function Form({ data, onSubmitForm }) {
+  const user = { ...data };
+  var validatorHelper;
+
+  function handleSubmit(e) {
+    // TODO: Check validation of input
+    if (validatorHelper.isAllValid() === true) {
+      const newUserData = validatorHelper.getFormData();
+      console.log(newUserData);
+      onSubmitForm({ ...user, ...newUserData });
+    } else {
+    }
+  }
+
+  useEffect(() => {
+    calendarHandler();
+  }, []);
+
+  useEffect(() => {
+    validatorHelper = validator("#profile-form");
+  }, [data]);
 
   return (
     <div className="form">
       <div className="form__action">
         <div className="form__cancel">Cancel</div>
-        <div className="form__save">Save</div>
+        <div className="form__save" onClick={(e) => handleSubmit(e)}>
+          Save
+        </div>
       </div>
       <form action="" className="form__container" id="profile-form">
         <div className="form__input-group">
@@ -27,7 +41,7 @@ export default function Form() {
             <input
               className="form__box"
               type="text"
-              defaultValue={data.firstName}
+              defaultValue={user.firstName}
               placeholder="Fill your first name"
               id="first-name"
               name="firstName"
@@ -40,7 +54,7 @@ export default function Form() {
             <input
               className="form__box"
               type="text"
-              defaultValue={data.lastName}
+              defaultValue={user.lastName}
               placeholder="Fill your last name"
               id="last-name"
               name="lastName"
@@ -51,14 +65,14 @@ export default function Form() {
         </div>
         <div className="form__input-group">
           <div className="form__input">
-            <label htmlFor="role">Title</label>
+            <label htmlFor="title">Title</label>
             <input
               className="form__box"
               type="text"
-              defaultValue={data.title}
+              defaultValue={user.title}
               placeholder="Fill your title"
-              id="role"
-              name="role"
+              id="title"
+              name="title"
               rules="required"
             />
             <span className="input__error"></span>
@@ -75,7 +89,7 @@ export default function Form() {
                   defaultValue="male"
                   id="male"
                   name="gender"
-                  defaultChecked={data.gender === "male" ? true : false}
+                  defaultChecked={user.gender === "male" ? true : false}
                   rules="required"
                 />
                 <span>Male</span>
@@ -86,7 +100,7 @@ export default function Form() {
                   type="radio"
                   defaultValue="female"
                   id="female"
-                  defaultChecked={data.gender === "female" ? true : false}
+                  defaultChecked={user.gender === "female" ? true : false}
                   name="gender"
                   rules="required"
                 />
@@ -98,7 +112,7 @@ export default function Form() {
                   type="radio"
                   defaultValue="other"
                   id="other"
-                  defaultChecked={data.gender === "other" ? true : false}
+                  defaultChecked={user.gender === "other" ? true : false}
                   name="gender"
                   rules="required"
                 />
@@ -109,7 +123,7 @@ export default function Form() {
           </div>
         </div>
         <div className="form__input-group">
-          <div className="form__input invalid" id="input-calendar">
+          <div className="form__input" id="input-calendar">
             <label htmlFor="birthday">Birthday</label>
             <div className="form__box birthday" name="birthday">
               <input
@@ -120,7 +134,7 @@ export default function Form() {
                 rules="required"
                 defaultValue="1980-06-26"
               />
-              <span>Chỗ này chưa sửa</span>
+              <span></span>
               <CalendarSVG />
             </div>
             <Calendar />
@@ -133,7 +147,7 @@ export default function Form() {
             <input
               className="form__box"
               type="text"
-              defaultValue={data.address}
+              defaultValue={user.address}
               placeholder="Fill your address"
               id="address"
               name="address"
@@ -148,7 +162,7 @@ export default function Form() {
             <input
               className="form__box"
               type="email"
-              defaultValue={data.email}
+              defaultValue={user.email}
               placeholder="Fill your email"
               id="email"
               name="email"
@@ -163,7 +177,7 @@ export default function Form() {
             <input
               className="form__box"
               type="text"
-              defaultValue={data.phone}
+              defaultValue={user.phone}
               placeholder="Fill your phone"
               id="phone"
               name="phone"

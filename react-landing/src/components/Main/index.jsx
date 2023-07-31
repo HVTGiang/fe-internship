@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <div id="main">
       <Header />
-      <Info />
+      <Info viewMode="edit" />
       {/* <div className="content-group">
         <About />
         <Posts />

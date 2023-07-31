@@ -1,4 +1,4 @@
-import setValue from "./calendar.js"
+import { setValue } from "./calendar.js"
 function validator(formSelector) {
 
     // Danh sách các hàm để validate

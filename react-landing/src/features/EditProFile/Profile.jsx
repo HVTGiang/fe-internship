@@ -1,12 +1,33 @@
-export default function Profile({}) {
+import { useState } from "react";
+
+export default function Profile({ data, onChangeImg }) {
+  const user = { ...data };
+
+  function handleUploadImage(e) {
+    if (e.target.files.length > 0)
+      onChangeImg({
+        ...user,
+        img: "./img/" + e.target.files[0].name,
+      });
+  }
+
   return (
     <div className="profile">
       <div className="profile__image">
-        <img src="./img/user_img.png" alt="" />
+        <img src={user.img} alt="" />
       </div>
-      <p className="profile__name">Charles Deo</p>
-      <p className="profile__role">UI/UX Designer</p>
-      <div className="profile__up-image">Upload photo</div>
+      <p className="profile__name">{user.firstName + " " + user.lastName}</p>
+      <p className="profile__role">{user.title}</p>
+      <label htmlFor="profile__up-image">
+        <div className="profile__up-image">Upload photo</div>
+      </label>
+      <input
+        onChange={(e) => handleUploadImage(e)}
+        type="file"
+        accept="image/png, image/gif, image/jpeg"
+        id="profile__up-image"
+        hidden
+      />
     </div>
   );
 }

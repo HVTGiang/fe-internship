@@ -1,8 +1,9 @@
+import { useState } from "react";
 import Comment from "./Comment";
 import CommentBox from "./CommentBox";
 import "./style.scss";
 export default function Comments({ isShow = false }) {
-  const commentsList = [
+  const [commentsList, setCommentsList] = useState([
     {
       user: {
         name: "Beckham",
@@ -19,16 +20,20 @@ export default function Comments({ isShow = false }) {
       text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatemaccusantium doloremque laudantium, to",
       time: "2023-07-28 12:51:00",
     },
-  ];
+  ]);
 
   let classList = ["comments"];
   if (!isShow) {
     classList.push("comments--hide");
   }
 
+  function handleComment(comment) {
+    setCommentsList([...commentsList, comment]);
+  }
+
   return (
     <div className={classList.join(" ")}>
-      <CommentBox />
+      <CommentBox onComment={handleComment} />
       {commentsList.map((comment, i) => (
         <Comment comment={comment} key={i} />
       ))}

@@ -1,16 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MoreSVG, LikeSVG, CommentSVG, FilledLikeSVG } from "../../assets/svg";
 import { toTimeAgo, numberWithCommas } from "../../utils";
 import Comments from "../Comments";
 import "./style.scss";
 
 export default function Post({ post, isLikePost }) {
-  let initTime = toTimeAgo(new Date(Date.parse(post.time)));
-
   const [isShowComment, setIsShowComment] = useState(false);
   const [likeCount, setLikeCount] = useState(post.react.like);
   const [commentCount, setCommentCount] = useState(post.react.comment);
   const [isLike, setIsLike] = useState(isLikePost);
+  const [time, setTime] = useState(Date.parse(post.time));
+
+  const timeAgo = toTimeAgo(time);
+
+  useEffect(() => {
+    const timeRunnerID = setInterval(() => {
+      setTime((time) => time + 1000);
+    }, 1000);
+
+    return () => {
+      clearInterval(timeRunnerID);
+    };
+  }, [time]);
 
   return (
     <div className="post">
@@ -21,7 +32,7 @@ export default function Post({ post, isLikePost }) {
           </div>
           <div className="owner__info">
             <p className="owner__name">{post.author.name}</p>
-            <p className="owner__public">{initTime}</p>
+            <p className="owner__public">{timeAgo}</p>
           </div>
         </div>
         <div className="post__action">

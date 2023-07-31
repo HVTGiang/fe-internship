@@ -1,6 +1,7 @@
 import "./App.scss";
-import Nav from "./components/Nav/index";
-import Main from "./components/Main/index";
+import Nav from "./components/Nav";
+import Main from "./components/Main";
+import Login from "./features/Login";
 function App() {
   return (
     <>
