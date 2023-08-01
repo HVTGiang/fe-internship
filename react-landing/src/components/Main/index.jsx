@@ -8,6 +8,8 @@ import Posts from "../Posts";
 import "./style.scss";
 import { useSelector } from "react-redux";
 import ActiveContact from "../ActiveContact";
+import handleNavResponsive from "./main";
+import { useEffect } from "react";
 
 export default function Main() {
 
@@ -42,6 +44,10 @@ export default function Main() {
       </div>
     </>
   );
+
+  useEffect(() => {
+    handleNavResponsive()
+  }, [])
   return (
     <div id="main">
       <Header />
