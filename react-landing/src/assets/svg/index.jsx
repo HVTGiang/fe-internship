@@ -1,0 +1,17 @@
+export { MessageSVG } from "./message_svg";
+export { ProfileSVG } from "./profile_svg";
+export { PurchaseSVG } from "./purchase_svg";
+export { ReturnSVG } from "./return_svg";
+export { SettingsSVG } from "./settings_svg";
+export { AnalyticsSVG } from "./analytics_svg";
+export { GallerySVG } from "./gallery_svg";
+export { HomeSVG } from "./home_svg";
+export { BirthdaySVG } from "./birthday_svg";
+export { AddressSVG } from "./address_svg";
+export { MailSVG } from "./mail_svg";
+export { PhoneSVG } from "./phone_svg";
+export { CommentSVG } from "./comment_svg";
+export { LikeSVG } from "./like_svg";
+export { MoreSVG } from "./more_svg";
+export { SendSVG } from "./sendcomment_svg";
+export { FilledLikeSVG } from "./filledlike_svg";
