@@ -13,15 +13,15 @@ export default function Post({ post, isLikePost }) {
 
   const timeAgo = toTimeAgo(time);
 
-  useEffect(() => {
-    const timeRunnerID = setInterval(() => {
-      setTime((time) => time + 1000);
-    }, 1000);
+  // useEffect(() => {
+  //   const timeRunnerID = setInterval(() => {
+  //     setTime((time) => time + 1000);
+  //   }, 1000);
 
-    return () => {
-      clearInterval(timeRunnerID);
-    };
-  }, [time]);
+  //   return () => {
+  //     clearInterval(timeRunnerID);
+  //   };
+  // }, [time]);
 
   return (
     <div className="post">

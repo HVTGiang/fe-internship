@@ -132,7 +132,7 @@ export default function Form({ data, onSubmitForm }) {
                 name="birthday"
                 id="birthday"
                 rules="required"
-                defaultValue="1980-06-26"
+                defaultValue={user.birthday}
               />
               <span></span>
               <CalendarSVG />

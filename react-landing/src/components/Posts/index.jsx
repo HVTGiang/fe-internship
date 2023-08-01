@@ -1,15 +1,20 @@
 import { useState } from "react";
 import Post from "../Post";
 import "./style.scss";
+import { useSelector } from "react-redux";
 
-export default function Posts() {
+export default function Posts({ data }) {
+
+  const user = useSelector(state => state.user)
+  const author = {
+    name: data.firstName + " " + data.lastName,
+    avt: data.img,
+  }
+
   const initPosts = [
     {
       id: 1,
-      author: {
-        name: "Charles Deo",
-        avt: "./img/user_img.png",
-      },
+      author,
       time: "2023-07-28 10:50:00",
       image: "./img/post_img.png",
       text: "New Blazer out here... $500!!!!!!",
@@ -20,10 +25,7 @@ export default function Posts() {
     },
     {
       id: 2,
-      author: {
-        name: "Charles Deo",
-        avt: "./img/user_img.png",
-      },
+      author,
       time: "2023-07-20 10:50:00",
       image: "./img/post_img_5.jpg",
       text: "Get it hight, touch the sky",

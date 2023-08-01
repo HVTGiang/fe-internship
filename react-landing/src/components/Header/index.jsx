@@ -1,7 +1,19 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { editUser } from "../../redux/userSlice";
 import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate()
+
+  function navigateToEdit() {
+    navigate("/profile-edit")
+  }
+  function handleLogout() {
+    navigate("/login")
+  }
 
   return (
     <div className="header" id="header">
@@ -25,11 +37,11 @@ export default function Header() {
       </div>
       <div className="user">
         <div className="user__text">
-          <p className="user__name">Charles Deo</p>
-          <p className="user__logout">Log out</p>
+          <p className="user__name" onClick={navigateToEdit}>{user.firstName + " " + user.lastName}</p>
+          <p className="user__logout" onClick={handleLogout}>Log out</p>
         </div>
-        <div className="user__img">
-          <img src="./img/user_img.png" alt="Charles Deo" />
+        <div className="user__img" onClick={navigateToEdit}>
+          <img src={user.img} alt="Charles Deo" />
         </div>
       </div>
     </div>

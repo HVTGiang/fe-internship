@@ -10,17 +10,18 @@ import {
   SettingsSVG,
 } from "../../assets/svg/index";
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const navItems = [
-    { title: "Home", icon: <HomeSVG /> },
-    { title: "Profile", icon: <ProfileSVG /> },
-    { title: "Messages", icon: <MessageSVG /> },
-    { title: "Purchases", icon: <PurchaseSVG /> },
-    { title: "Returns", icon: <ReturnSVG /> },
-    { title: "Gallery", icon: <GallerySVG /> },
-    { title: "Analytics", icon: <AnalyticsSVG /> },
-    { title: "Settings", icon: <SettingsSVG /> },
+    { title: "Home", icon: <HomeSVG />, route: "/home" },
+    { title: "Profile", icon: <ProfileSVG />, route: "/profile" },
+    { title: "Messages", icon: <MessageSVG />, route: "/messages" },
+    { title: "Purchases", icon: <PurchaseSVG />, route: "/purchases" },
+    { title: "Returns", icon: <ReturnSVG />, route: "/returns" },
+    { title: "Gallery", icon: <GallerySVG />, route: "/gallery" },
+    { title: "Analytics", icon: <AnalyticsSVG />, route: "/analytics" },
+    { title: "Settings", icon: <SettingsSVG />, route: "/settings" },
   ];
 
   const [selected, setSelected] = useState(1);
@@ -39,19 +40,21 @@ export default function Nav() {
 
         <ul className="menu">
           {navItems.map((item, i) => (
-            <li
-              key={i}
-              data-index={i}
-              className={
-                i === selected ? "menu__item--select menu__item" : "menu__item"
-              }
-              onClick={(e) => {
-                handleChangeNav(e);
-              }}
-            >
-              <div className="menu__icon">{item.icon}</div>
-              <span>{item.title}</span>
-            </li>
+            <Link to={item.route} style={{ textDecoration: "none" }} key={i}>
+              <li
+                key={i}
+                data-index={i}
+                className={
+                  i === selected ? "menu__item--select menu__item" : "menu__item"
+                }
+                onClick={(e) => {
+                  handleChangeNav(e);
+                }}
+              >
+                <div className="menu__icon">{item.icon}</div>
+                <span>{item.title}</span>
+              </li>
+            </Link>
           ))}
         </ul>
       </nav>

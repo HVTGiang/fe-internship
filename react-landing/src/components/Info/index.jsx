@@ -1,6 +1,13 @@
+import { useSelector, useDispatch } from "react-redux";
+import { editUser } from "../../redux/userSlice";
 import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
-export default function Info({ viewMode }) {
+export default function Info({ viewMode = "owner" }) {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const visitorAction = (
     <>
       <div className="action__mess">
@@ -22,14 +29,36 @@ export default function Info({ viewMode }) {
     </>
   );
 
-  const ownerAction = <p className="action__edit-profile">Edit Profile</p>;
+  const ownerAction = (
+    <p
+      className="action__edit-profile"
+      onClick={() => navigate("profile-edit")}
+    >
+      Edit Profile
+    </p>
+  );
+
+  function handleChangeCover(e) {
+    dispatch(
+      editUser({ ...user, imgCover: "./img/" + e.target.files[0].name })
+    );
+  }
 
   return (
     <div className="info">
       <div className="info__cover">
-        <img src="./img/info_cover.png" alt="People" />
+        <img src={user.imgCover} alt="People" />
         {viewMode === "owner" || viewMode === "edit" ? (
-          <div className="info__edit-cover">Edit Cover Photo</div>
+          <label htmlFor="info__edit-cover">
+            <div className="info__edit-cover">Edit Cover Photo</div>
+            <input
+              type="file"
+              hidden
+              id="info__edit-cover"
+              onChange={handleChangeCover}
+              accept="image/png, image/gif, image/jpeg"
+            />
+          </label>
         ) : (
           ""
         )}

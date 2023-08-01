@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { SendSVG } from "../../assets/svg";
 export default function CommentBox({ onComment }) {
+
+  const userData = useSelector(state => state.user)
   const user = {
-    name: "Charles Deo",
-    avt: "./img/user_img.png",
+    name: `${userData.firstName} ${userData.lastName}`,
+    avt: userData.img,
   };
 
   function handleComment(e) {
@@ -23,7 +26,7 @@ export default function CommentBox({ onComment }) {
   return (
     <div className="comment__input">
       <div className="user-image">
-        <img src="./img/user_img.png" alt="Comment owner" />
+        <img src={userData.img} alt="Comment owner" />
       </div>
       <div className="input-box">
         <input
