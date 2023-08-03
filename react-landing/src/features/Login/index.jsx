@@ -1,44 +1,23 @@
-import "./style.scss"
-import handleAuthenForm from "./authen"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import "./style.scss"
+import handleAuthenForm from "./authen"
 import { editUser } from "../../redux/userSlice";
+import data from "./data.json"
 
 export default function Input() {
 
   const [emailSI, setEmailSI] = useState("")
   const [passwordSI, setPasswordSI] = useState("")
-  const [emailSU, setEmailSU] = useState("")
-  const [passwordSU, setPasswordSU] = useState("")
-  const [rePasswordSU, setRePasswordSU] = useState("")
+  // const [emailSU, setEmailSU] = useState("")
+  // const [passwordSU, setPasswordSU] = useState("")
+  // const [rePasswordSU, setRePasswordSU] = useState("")
 
   const navigate = useNavigate()
-  const fakeUser1 = {
-    firstName: "Charles",
-    lastName: "Deo",
-    title: "UI/UX Designer",
-    gender: "male",
-    birthday: "1980-06-26",
-    address: "2239 Hog Camp Road, Schaumburg",
-    email: "charles5182@ummoh.com",
-    phone: "33757005467",
-    img: "./img/user_img.png",
-    imgCover: "./img/info_cover.png",
-  }
-
-  const fakeUser2 = {
-    firstName: "Eddie",
-    lastName: "Lobano",
-    title: "Manager",
-    gender: "male",
-    birthday: "1987-06-26",
-    address: "2239 Hog Camp Road, US",
-    email: "eddie@ummoh.com",
-    phone: "33757005467",
-    img: "./img/avatar.jpg",
-    imgCover: "./img/post_img_3.png",
-  }
+  
+  const { users } = data
+  
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
@@ -52,18 +31,18 @@ export default function Input() {
 
   function handleSignIn(e) {
     e.preventDefault()
-    if (emailSI === "charles5182@ummoh.com" && passwordSI === "123") {
-      dispatch(editUser({ ...user, ...fakeUser1 }))
-      navigate("/")
-    }
-    else if (emailSI === "eddie@ummoh.com" && passwordSI === "123") {
-      dispatch(editUser({ ...user, ...fakeUser2 }))
+
+    const filterUser = users.filter((u) => { return emailSI === u.email && passwordSI === u.password })
+    if (filterUser.length) {
+      const loggedInUser = filterUser[0]
+      dispatch(editUser({ ...user, ...loggedInUser }))
       navigate("/")
     }
     else {
       alert("Check your login info")
     }
   }
+
 
   return (
     <div className="root login">

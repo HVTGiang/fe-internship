@@ -1,15 +1,19 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import EditProfile from "../../features/EditProFile";
 import About from "../About";
 import ExtendContact from "../ExtendContact";
 import Header from "../Header";
 import Info from "../Info";
 import Posts from "../Posts";
-import "./style.scss";
-import { useSelector } from "react-redux";
 import ActiveContact from "../ActiveContact";
+
 import handleNavResponsive from "./main";
-import { useEffect } from "react";
+import data from "./data.json"
+
+import "./style.scss";
 
 export default function Main() {
 
@@ -17,27 +21,15 @@ export default function Main() {
 
   const user = useSelector((state) => state.user);
 
+  // Whether using useMemo for it?
   if (user.email === "charles5182@ummoh.com") {
     viewMode = "owner"
   }
 
-  const profileData = {
-    firstName: "Charles",
-    lastName: "Deo",
-    title: "UI/UX Designer",
-    gender: "male",
-    birthday: "1980-06-26",
-    address: "2239 Hog Camp Road, Schaumburg",
-    email: "charles5182@ummoh.com",
-    phone: "33757005467",
-    img: "./img/user_img.png",
-    imgCover: "./img/info_cover.png",
-  }
-
   const ProfileSection = (
     <>
-      <About data={profileData} />
-      <Posts data={profileData} />
+      <About data={data} />
+      <Posts data={data} />
       <div className="contact">
         <ExtendContact />
         {viewMode === "owner" ? <ActiveContact /> : ""}
@@ -48,6 +40,7 @@ export default function Main() {
   useEffect(() => {
     handleNavResponsive()
   }, [])
+  
   return (
     <div id="main">
       <Header />

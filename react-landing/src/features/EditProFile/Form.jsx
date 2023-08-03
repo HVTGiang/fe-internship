@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
 import Calendar from "./Calendar.jsx";
-import CalendarSVG from "./CalendarSVG";
+
 import calendarHandler from "./calendarHandler.js";
+import CalendarSVG from "./CalendarSVG";
 import validator from "./validate.js";
 
 export default function Form({ data, onSubmitForm }) {
@@ -12,7 +14,6 @@ export default function Form({ data, onSubmitForm }) {
     // TODO: Check validation of input
     if (validatorHelper.isAllValid() === true) {
       const newUserData = validatorHelper.getFormData();
-      console.log(newUserData);
       onSubmitForm({ ...user, ...newUserData });
     } else {
     }
@@ -25,6 +26,8 @@ export default function Form({ data, onSubmitForm }) {
   useEffect(() => {
     validatorHelper = validator("#profile-form");
   }, [data]);
+
+  const { firstName, lastName, title, gender, birthday, address, email, phone } = user
 
   return (
     <div className="form">
@@ -41,7 +44,7 @@ export default function Form({ data, onSubmitForm }) {
             <input
               className="form__box"
               type="text"
-              defaultValue={user.firstName}
+              defaultValue={firstName}
               placeholder="Fill your first name"
               id="first-name"
               name="firstName"
@@ -54,7 +57,7 @@ export default function Form({ data, onSubmitForm }) {
             <input
               className="form__box"
               type="text"
-              defaultValue={user.lastName}
+              defaultValue={lastName}
               placeholder="Fill your last name"
               id="last-name"
               name="lastName"
@@ -69,7 +72,7 @@ export default function Form({ data, onSubmitForm }) {
             <input
               className="form__box"
               type="text"
-              defaultValue={user.title}
+              defaultValue={title}
               placeholder="Fill your title"
               id="title"
               name="title"
@@ -89,7 +92,7 @@ export default function Form({ data, onSubmitForm }) {
                   defaultValue="male"
                   id="male"
                   name="gender"
-                  defaultChecked={user.gender === "male" ? true : false}
+                  defaultChecked={gender === "male" ? true : false}
                   rules="required"
                 />
                 <span>Male</span>
@@ -100,7 +103,7 @@ export default function Form({ data, onSubmitForm }) {
                   type="radio"
                   defaultValue="female"
                   id="female"
-                  defaultChecked={user.gender === "female" ? true : false}
+                  defaultChecked={gender === "female" ? true : false}
                   name="gender"
                   rules="required"
                 />
@@ -112,7 +115,7 @@ export default function Form({ data, onSubmitForm }) {
                   type="radio"
                   defaultValue="other"
                   id="other"
-                  defaultChecked={user.gender === "other" ? true : false}
+                  defaultChecked={gender === "other" ? true : false}
                   name="gender"
                   rules="required"
                 />
@@ -132,7 +135,7 @@ export default function Form({ data, onSubmitForm }) {
                 name="birthday"
                 id="birthday"
                 rules="required"
-                defaultValue={user.birthday}
+                defaultValue={birthday}
               />
               <span></span>
               <CalendarSVG />
@@ -147,7 +150,7 @@ export default function Form({ data, onSubmitForm }) {
             <input
               className="form__box"
               type="text"
-              defaultValue={user.address}
+              defaultValue={address}
               placeholder="Fill your address"
               id="address"
               name="address"
@@ -162,7 +165,7 @@ export default function Form({ data, onSubmitForm }) {
             <input
               className="form__box"
               type="email"
-              defaultValue={user.email}
+              defaultValue={email}
               placeholder="Fill your email"
               id="email"
               name="email"
@@ -177,7 +180,7 @@ export default function Form({ data, onSubmitForm }) {
             <input
               className="form__box"
               type="text"
-              defaultValue={user.phone}
+              defaultValue={phone}
               placeholder="Fill your phone"
               id="phone"
               name="phone"

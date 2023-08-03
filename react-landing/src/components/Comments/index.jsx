@@ -2,25 +2,12 @@ import { useState } from "react";
 import Comment from "./Comment";
 import CommentBox from "./CommentBox";
 import "./style.scss";
+import data from "./data.json";
 export default function Comments({ isShow = false }) {
-  const [commentsList, setCommentsList] = useState([
-    {
-      user: {
-        name: "Beckham",
-        avt: "./img/Beckam.png",
-      },
-      text: "Nice!!! wAY UGDUY",
-      time: "2023-07-28 13:02:00",
-    },
-    {
-      user: {
-        name: "Kante",
-        avt: "./img/Kente.png",
-      },
-      text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatemaccusantium doloremque laudantium, to",
-      time: "2023-07-28 12:51:00",
-    },
-  ]);
+
+  const initialCommentList = data.comments
+
+  const [commentsList, setCommentsList] = useState(initialCommentList);
 
   let classList = ["comments"];
   if (!isShow) {
@@ -28,7 +15,7 @@ export default function Comments({ isShow = false }) {
   }
 
   function handleComment(comment) {
-    setCommentsList([...commentsList, comment]);
+    setCommentsList(prevList => [...prevList, comment]);
   }
 
   return (

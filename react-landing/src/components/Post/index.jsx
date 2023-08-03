@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
-import { MoreSVG, LikeSVG, CommentSVG, FilledLikeSVG } from "../../assets/svg";
+import { useMemo, useState } from "react";
+
 import { toTimeAgo, numberWithCommas } from "../../utils";
+import { MoreSVG, LikeSVG, CommentSVG, FilledLikeSVG } from "../../assets/svg";
+
 import Comments from "../Comments";
+
 import "./style.scss";
 
 export default function Post({ post, isLikePost }) {
   const [isShowComment, setIsShowComment] = useState(false);
-  const [likeCount, setLikeCount] = useState(post.react.like);
-  const [commentCount, setCommentCount] = useState(post.react.comment);
   const [isLike, setIsLike] = useState(isLikePost);
-  const [time, setTime] = useState(Date.parse(post.time));
 
+  const commentCount = post.react.comment;
+  const time = Date.parse(post.time);
+
+  let likeCount = post.react.like
   const timeAgo = toTimeAgo(time);
 
   // useEffect(() => {
@@ -23,15 +27,21 @@ export default function Post({ post, isLikePost }) {
   //   };
   // }, [time]);
 
+  likeCount = useMemo(() => {
+    return isLike ? likeCount + 1 : likeCount
+  }, [isLike])
+
+  const { author: { avt, name }, image, text } = post
+
   return (
     <div className="post">
       <div className="post__header">
         <div className="owner">
           <div className="owner__image">
-            <img src={post.author.avt} alt="Owner of the post" />
+            <img src={avt} alt="Owner of the post" />
           </div>
           <div className="owner__info">
-            <p className="owner__name">{post.author.name}</p>
+            <p className="owner__name">{name}</p>
             <p className="owner__public">{timeAgo}</p>
           </div>
         </div>
@@ -40,18 +50,17 @@ export default function Post({ post, isLikePost }) {
         </div>
       </div>
       <div className="post__image">
-        <img src={post.image} alt="A man in a gentle suit" />
+        <img src={image} alt="A man in a gentle suit" />
       </div>
       <div className="post__title">
-        <p className="title__name">{post.author.name}</p>
-        <p className="title__desc">{post.text}</p>
+        <p className="title__name">{name}</p>
+        <p className="title__desc">{text}</p>
       </div>
       <div className="post__react">
         <div
           className="react__fav"
           onClick={() => {
-            setIsLike(!isLike);
-            setLikeCount(likeCount + (isLike ? -1 : 1));
+            setIsLike(prevIsLike => !prevIsLike);
           }}
         >
           {isLike ? <FilledLikeSVG /> : <LikeSVG />}
@@ -60,7 +69,7 @@ export default function Post({ post, isLikePost }) {
         <div
           className="react__comment"
           onClick={() => {
-            setIsShowComment(!isShowComment);
+            setIsShowComment(prevState => !prevState);
           }}
         >
           <CommentSVG />

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import {
   HomeSVG,
   ProfileSVG,
@@ -9,8 +11,8 @@ import {
   AnalyticsSVG,
   SettingsSVG,
 } from "../../assets/svg/index";
+
 import "./style.scss";
-import { Link } from "react-router-dom";
 
 export default function Nav() {
   const navItems = [
@@ -25,9 +27,10 @@ export default function Nav() {
   ];
 
   const [selected, setSelected] = useState(1);
+
   function handleChangeNav(e) {
     const liELement = e.target.closest("li");
-    setSelected(Number(liELement.dataset.index));
+    setSelected(+liELement.dataset.index);
   }
 
   return (

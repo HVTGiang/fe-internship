@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { editUser } from "../../redux/userSlice";
-import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import "./style.scss";
 
 export default function Info({ viewMode = "owner" }) {
   const user = useSelector((state) => state.user);
@@ -32,7 +32,7 @@ export default function Info({ viewMode = "owner" }) {
   const ownerAction = (
     <p
       className="action__edit-profile"
-      onClick={() => navigate("profile-edit")}
+      onClick={() => navigate("/profile-edit")}
     >
       Edit Profile
     </p>

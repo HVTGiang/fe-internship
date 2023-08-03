@@ -33,9 +33,9 @@ export default function ActiveContact() {
         },
     ];
     return (
-        <div class="con-active">
-            <p class="con-active__title">Active</p>
-            <ul class="con-active__list">
+        <div className="con-active">
+            <p className="con-active__title">Active</p>
+            <ul className="con-active__list">
                 {
                     userList.map((item, i) => {
                         return <Item key={i} user={item} />
@@ -48,9 +48,12 @@ export default function ActiveContact() {
 
 function Item({ user }) {
 
-    const style = { backgroundColor: user.color }
+    const { avt, name, status, color, timeOnline } = user
+
+    const style = { backgroundColor: color }
+    
     const statusClass = ["item"]
-    if (user.status === 'Online') {
+    if (status === 'Online') {
         statusClass.push("item--online")
     }
     else {
@@ -58,15 +61,15 @@ function Item({ user }) {
     }
 
     return (
-        <li class={statusClass.join(" ")}>
-            <div class="item__image" style={style}>
-                <img src={user.avt} alt="Eddie Lobanovskiy" />
+        <li className={statusClass.join(" ")}>
+            <div className="item__image" style={style}>
+                <img src={avt} alt="Eddie Lobanovskiy" />
             </div>
-            <div class="item__info">
-                <p class="item__name">{user.name}</p>
-                <p class="item__status">{user.status}</p>
+            <div className="item__info">
+                <p className="item__name">{name}</p>
+                <p className="item__status">{status}</p>
             </div>
-            <p class="item__time">{toTimeAgo(user.timeOnline)}</p>
+            <p className="item__time">{toTimeAgo(timeOnline)}</p>
         </li>
     );
 }

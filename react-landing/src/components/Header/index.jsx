@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { editUser } from "../../redux/userSlice";
+import { useSelector } from "react-redux";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 
