@@ -11,6 +11,7 @@ const themeColors = {
     greyF7: "#F7F7F7",
     redFF: "#FF784F",
     blue60: "#60AFFF",
+    white: "#FFFFFF"
   },
 } as const;
 
