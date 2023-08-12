@@ -2,6 +2,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import styled from "@emotion/styled";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { Product, ProductsProps, Pagination } from "../type";
+import { useStore } from "../store";
 
 const StyledBoardHeader = styled.div`
   display: flex;
@@ -12,6 +14,7 @@ const StyledBoardHeader = styled.div`
 
 const StyledTitle = styled.h2`
   flex: 1;
+  display: inline-block;
 `;
 
 const StyledSearchBox = styled(TextField)`
@@ -19,6 +22,8 @@ const StyledSearchBox = styled(TextField)`
 `;
 
 const BoardHeader = () => {
+  const [state, dispatch] = useStore();
+  const { products, pagination, pageSize } = state;
   return (
     <StyledBoardHeader>
       <StyledTitle>Products</StyledTitle>
