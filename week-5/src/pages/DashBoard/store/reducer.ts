@@ -6,6 +6,11 @@ interface StateType {
   pagination?: Pagination;
   pageSize?: number;
   page?: number;
+  isOverLimit?: boolean;
+  sortBy?: string;
+  sortType?: string;
+  searchTerm?: string;
+  active?: boolean;
 }
 
 export const initState: StateType = {
@@ -16,9 +21,12 @@ export const initState: StateType = {
     limit: 0,
     hasItem: false,
   },
-  pageSize: 5,
+  pageSize: 12,
   page: 1,
+  isOverLimit: false,
+  active: true,
 };
+
 type Action = {
   type: string;
   payload: any;
@@ -34,10 +42,7 @@ export const productReducer = (state: any, action: Action) => {
     case ACTION_TYPE.SET_PAGE:
       return {
         ...state,
-        pagination: {
-          ...state.pagination,
-          page: action.payload,
-        },
+        page: action.payload,
       };
     case ACTION_TYPE.SET_PAGE_SIZE:
       return {
@@ -52,5 +57,32 @@ export const productReducer = (state: any, action: Action) => {
           ...action.payload,
         },
       };
+    case ACTION_TYPE.SET_OVER_LIMIT:
+      return {
+        ...state,
+        isOverLimit: action.payload,
+      };
+    case ACTION_TYPE.SET_SORT_BY:
+      return {
+        ...state,
+        sortBy: action.payload,
+      };
+    case ACTION_TYPE.SET_SORT_TYPE:
+      return {
+        ...state,
+        sortType: action.payload,
+      };
+    case ACTION_TYPE.SET_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
+    case ACTION_TYPE.SET_ACTIVE:
+      return {
+        ...state,
+        active: action.payload,
+      };
+    default:
+      return state;
   }
 };

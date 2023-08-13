@@ -4,6 +4,9 @@ import styled from "@emotion/styled";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { Product, ProductsProps, Pagination } from "../type";
 import { useStore } from "../store";
+import SearchBox from "../Table/SearchBox";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { setActive } from "../store/action";
 
 const StyledBoardHeader = styled.div`
   display: flex;
@@ -17,24 +20,21 @@ const StyledTitle = styled.h2`
   display: inline-block;
 `;
 
-const StyledSearchBox = styled(TextField)`
-  width: 40%;
-`;
-
 const BoardHeader = () => {
   const [state, dispatch] = useStore();
-  const { products, pagination, pageSize } = state;
+  const { products, pagination, pageSize, active } = state;
   return (
     <StyledBoardHeader>
       <StyledTitle>Products</StyledTitle>
-      <StyledSearchBox
-        id="standard-search"
-        label="Search products..."
-        type="search"
-        variant="outlined"
-        size="small"
+      <FormControlLabel
+        control={<Checkbox defaultChecked={active} />}
+        label="Active?"
+        onClick={() => {
+          dispatch(setActive(!active));
+        }}
       />
-      <FilterAltIcon />
+      <SearchBox />
+      {/* <FilterAltIcon /> */}
     </StyledBoardHeader>
   );
 };

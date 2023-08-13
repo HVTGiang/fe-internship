@@ -7,6 +7,7 @@ import { Product, ProductsProps, Pagination } from "../type";
 const StyledTable = styled.table`
   border-collapse: collapse;
   vertical-align: middle;
+  width: 100%;
 
   td,
   th {

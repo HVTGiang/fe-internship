@@ -6,6 +6,7 @@ import AuthenPage from "./pages/Authen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMemo } from "react";
 import DashBoard from "./pages/DashBoard";
+import { getCookie } from "./cookie";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -22,9 +23,11 @@ const StyledApp = styled.div`
 `;
 
 function App() {
-  const isLogged = useMemo(() => {
-    return !!window.localStorage.getItem("accessToken") || false;
-  }, []);
+  
+  const isLogged =
+    !!window.localStorage.getItem("accessToken") ||
+    getCookie("accessToken") ||
+    false;
 
   return (
     <ThemeProvider theme={theme}>

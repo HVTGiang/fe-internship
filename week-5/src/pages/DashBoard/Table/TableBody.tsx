@@ -23,72 +23,43 @@ const StyledRow = styled.tr`
   }
 `;
 
-const TableBody = () => {
-  // const data = [
-  //   {
-  //     name: "Tiệm tập hoá Namiya",
-  //     price: 3000,
-  //     description: "Hay dữ lắm luôn á nha, đọc mệt nghỉ",
-  //     active: true,
-  //   },
-  //   {
-  //     name: "Thông điệp bí ẩn từ vũ trụ",
-  //     price: 5483,
-  //     description: "Dở ẹc đọc thấy gớm ai mà thèm đọc má",
-  //     active: false,
-  //   },
-  //   {
-  //     name: "Tiệm tập hoá Namiya",
-  //     price: 3000,
-  //     description: "Hay dữ lắm luôn á nha, đọc mệt nghỉ",
-  //     active: true,
-  //   },
-  //   {
-  //     name: "Thông điệp bí ẩn từ vũ trụ",
-  //     price: 5483,
-  //     description:
-  //       "Dở ẹc đọc thấy gớm ai mà thèm đọc má Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, ea corrupti molestiae ducimus aliquam nihil excepturi vero porro quae non quia earum incidunt sequi provident illum enim, voluptas commodi! Ut?",
-  //     active: false,
-  //   },
-  //   {
-  //     name: "Thông điệp bí ẩn từ vũ trụ",
-  //     price: 5483,
-  //     description:
-  //       "Dở ẹc đọc thấy gớm ai mà thèm đọc má Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, ea corrupti molestiae ducimus aliquam nihil excepturi vero porro quae non quia earum incidunt sequi provident illum enim, voluptas commodi! Ut?",
-  //     active: false,
-  //   },
-  //   {
-  //     name: "Thông điệp bí ẩn từ vũ trụ",
-  //     price: 5483,
-  //     description:
-  //       "Dở ẹc đọc thấy gớm ai mà thèm đọc má Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, ea corrupti molestiae ducimus aliquam nihil excepturi vero porro quae non quia earum incidunt sequi provident illum enim, voluptas commodi! Ut?",
-  //     active: false,
-  //   },
-  //   {
-  //     name: "Thông điệp bí ẩn từ vũ trụ",
-  //     price: 5483,
-  //     description:
-  //       "Dở ẹc đọc thấy gớm ai mà thèm đọc má Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, ea corrupti molestiae ducimus aliquam nihil excepturi vero porro quae non quia earum incidunt sequi provident illum enim, voluptas commodi! Ut?",
-  //     active: false,
-  //   },
-  // ];
-  const [state, dispatch] = useStore();
-  const { products, pagination, pageSize } = state;
+const StyledCheckBox = styled(Checkbox)`
+  cursor: default;
+`;
 
+const TableBody = () => {
+  const [state, dispatch] = useStore();
+  const { products, pagination, pageSize, page } = state;
+  const { totalItem, currentPage, limit, hasItem } = pagination;
+
+  const productFrom = (page - 1) * pageSize + 1;
+  const productTo = page * pageSize <= totalItem ? page * pageSize : totalItem;
+
+  const toLimitString = (text: string, limit: number) => {
+    const dots = "...";
+    if (text.length > limit) {
+      text = text.substring(0, limit) + dots;
+    }
+    return text;
+  };
   return (
     <StyledBody>
-      {products.map((p: Product, i: number) => {
-        if (i < pageSize)
+      {products?.map((p: Product, i: number) => {
+        const item = i + 1 + pageSize * (page - 1);
+
+        if (item >= productFrom && item <= productTo) {
           return (
-            <StyledRow key={i}>
+            <StyledRow key={p.id}>
               <th className="left">{p.name}</th>
-              <td className="left">{p.description}</td>
+              <td className="left">{toLimitString(p.description, 100)}</td>
               <td className="right">${p.price}</td>
               <td className="center">
-                <Checkbox checked={p.active} />
+                <StyledCheckBox checked={p.active} />
               </td>
             </StyledRow>
           );
+        } else {
+        }
       })}
     </StyledBody>
   );

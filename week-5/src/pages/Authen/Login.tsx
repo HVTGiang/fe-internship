@@ -15,6 +15,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import SnackBar from "./SnackBar";
+import { setCookie } from "../../cookie";
 
 const StyledLogin = styled.div`
   background-color: white;
@@ -117,6 +118,7 @@ const Login = () => {
         if (isRemember) {
           localStorage.setItem("accessToken", response.data.accessToken);
         }
+        setCookie("accessToken", response.data.accessToken);
         navigateDashboard();
       }
     } catch (err) {
