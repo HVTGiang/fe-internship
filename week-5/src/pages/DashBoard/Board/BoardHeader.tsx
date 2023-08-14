@@ -27,11 +27,15 @@ const BoardHeader = () => {
     <StyledBoardHeader>
       <StyledTitle>Products</StyledTitle>
       <FormControlLabel
-        control={<Checkbox defaultChecked={active} />}
+        control={
+          <Checkbox
+            checked={active}
+            onClick={() => {
+              dispatch(setActive(!active));
+            }}
+          />
+        }
         label="Active?"
-        onClick={() => {
-          dispatch(setActive(!active));
-        }}
       />
       <SearchBox />
       {/* <FilterAltIcon /> */}

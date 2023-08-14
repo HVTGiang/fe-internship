@@ -52,13 +52,11 @@ const Board = () => {
     //   getTwoPagesProduct();
     //   dispatch(setProducts(productList));
     // }
-    getProducts(page, sortBy, sortType, searchTerm, active).then(
-      (data) => {
-        dispatch(setProducts(data?.items));
-        dispatch(setPagination(data?.pagination));
-      }
-    );
-  }, [page, sortBy, sortType, searchTerm]);
+    getProducts(page, sortBy, sortType, searchTerm, active).then((data) => {
+      dispatch(setProducts(data?.items));
+      dispatch(setPagination(data?.pagination));
+    });
+  }, [page, sortBy, sortType, searchTerm, active]);
 
   const getProducts = async (
     page: number,
@@ -80,7 +78,7 @@ const Board = () => {
       active?: boolean;
     } = {
       page: page,
-      active,
+      active : active,
     };
 
     if (sortBy) {
