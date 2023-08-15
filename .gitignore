@@ -1,0 +1,4 @@
+node_modules
+
+public/img/*.svg
+public/img/user_img1.png
