@@ -1,6 +1,9 @@
-const BASEURL = "http://localhost:3333";
+const BASEURL_AUTHEN = "https://reqres.in/api";
+const BASEURL_PRODUCT = "https://fakestoreapi.com/products";
+
 const ENDPOINTS = {
-  login: BASEURL + "/authen/user",
-  products: BASEURL + "/products",
+  login: BASEURL_AUTHEN + "/login",
+  register: BASEURL_AUTHEN + "/register",
+  allProducts: BASEURL_PRODUCT + "/",
 };
 export default ENDPOINTS;

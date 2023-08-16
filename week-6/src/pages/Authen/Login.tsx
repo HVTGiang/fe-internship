@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 import SnackBar from "./SnackBar";
 import { setCookie } from "../../cookie";
+import ENDPOINTS from "../../api/endpoint";
 
 const StyledLogin = styled.div`
   background-color: white;
@@ -76,16 +77,8 @@ const Login = () => {
     type: "warning" as AlertColor,
   });
   const yubSchema = object().shape({
-    username: string()
-      .min(10, "Your username must be at least 10 characters")
-      .required("Please fill this section"),
-    password: string()
-      .min(10, "Password must be at least 10 characters")
-      .required("Please fill this section")
-      .matches(
-        passwordRegex,
-        "Password must contain at least one number, one upper case letter"
-      ),
+    username: string().email().required("Please fill this section"),
+    password: string().required("Please fill this section"),
   });
 
   // form từ react hook form
@@ -105,28 +98,35 @@ const Login = () => {
     navigate("/authen/signup");
   };
   const navigateDashboard = () => {
-    navigate("/dashboard");
+    navigate("/products");
   };
 
   const onSubmit: SubmitHandler<object> = async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3333/auth/users",
-        data
-      );
-      if (response.status === 201) {
+      const response = await axios.post(ENDPOINTS.login, data);
+      if (response.status === 200) {
         if (isRemember) {
-          localStorage.setItem("accessToken", response.data.accessToken);
+          localStorage.setItem("accessToken", response.data.token);
         }
-        setCookie("accessToken", response.data.accessToken);
+        setCookie("accessToken", response.data.token);
+        console.log(response);
         navigateDashboard();
       }
-    } catch (err) {
+    } catch (err: any) {
+      let message = "";
+      switch (err?.response?.status) {
+        case 400:
+          message = "User is not found";
+          break;
+        default:
+          message = "Login failed";
+          break;
+      }
       setSnackBarState((prev) => {
         return {
           ...prev,
           open: true,
-          message: "Username or password incorrect",
+          message: message,
           type: "warning",
         };
       });
@@ -162,7 +162,12 @@ const Login = () => {
           </Typography>
         </StyledTitle>
         <StyledForm action="" onSubmit={handleSubmit(onSubmit)}>
-          <TextInputField name="username" label="Username" control={control} />
+          <TextInputField
+            name="username"
+            label="Username"
+            control={control}
+            type="email"
+          />
           <ErrorMessage>{errors.username?.message}</ErrorMessage>
           <PasswordField name="password" label="Password" control={control} />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>

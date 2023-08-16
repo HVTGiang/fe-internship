@@ -16,8 +16,8 @@ const DashBoard = () => {
   return (
     <StoreProvider>
       <DashBoardLayout>
-        <Nav />
-        <Board />
+        {/* <Nav /> */}
+        {/* <Board /> */}
       </DashBoardLayout>
     </StoreProvider>
   );

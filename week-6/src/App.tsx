@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMemo } from "react";
 import DashBoard from "./pages/DashBoard";
 import { getCookie } from "./cookie";
+import { Products } from "./pages/Products";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -24,7 +25,6 @@ const StyledApp = styled.div`
 `;
 
 function App() {
-  
   const isLogged =
     !!window.localStorage.getItem("accessToken") ||
     getCookie("accessToken") ||
@@ -38,9 +38,9 @@ function App() {
             <Route
               path="/"
               index
-              element={isLogged ? <DashBoard /> : <AuthenPage />}
+              element={isLogged ? <Products /> : <AuthenPage />}
             />
-            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/product/*" element={<Products />} />
             <Route path="/authen/*" element={<AuthenPage />} />
           </Routes>
         </StyledApp>
