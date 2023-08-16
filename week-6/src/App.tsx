@@ -8,6 +8,8 @@ import { useMemo } from "react";
 import DashBoard from "./pages/DashBoard";
 import { getCookie } from "./cookie";
 import { Products } from "./pages/Products";
+import { Provider } from "react-redux";
+import store from "./store";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -32,19 +34,21 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <StyledApp className="App">
-          <Routes>
-            <Route
-              path="/"
-              index
-              element={isLogged ? <Products /> : <AuthenPage />}
-            />
-            <Route path="/product/*" element={<Products />} />
-            <Route path="/authen/*" element={<AuthenPage />} />
-          </Routes>
-        </StyledApp>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <StyledApp className="App">
+            <Routes>
+              <Route
+                path="/"
+                index
+                element={isLogged ? <Products /> : <AuthenPage />}
+              />
+              <Route path="/product/*" element={<Products />} />
+              <Route path="/authen/*" element={<AuthenPage />} />
+            </Routes>
+          </StyledApp>
+        </BrowserRouter>
+      </Provider>
     </ThemeProvider>
   );
 }

@@ -5,5 +5,6 @@ const ENDPOINTS = {
   login: BASEURL_AUTHEN + "/login",
   register: BASEURL_AUTHEN + "/register",
   allProducts: BASEURL_PRODUCT + "/",
+  detailProduct: BASEURL_PRODUCT + "/",
 };
 export default ENDPOINTS;

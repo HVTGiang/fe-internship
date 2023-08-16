@@ -1,7 +1,13 @@
 import styled from "@emotion/styled";
-import StarIcon from "@mui/icons-material/Star";
 import StarsRating from "react-star-rate";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+
 import { theme } from "../../../mui-config/theme";
+import ENDPOINTS from "../../../api/endpoint";
+import { Product } from "../type";
 
 const StyledContainer = styled.div`
   margin: 20px auto;
@@ -14,6 +20,7 @@ const StyledContainer = styled.div`
 
 const ProductImage = styled.div`
   width: 40%;
+  min-width: 40%;
   padding: 20px;
   box-sizing: border-box;
   border-radius: 10px 10px 0 0;
@@ -34,6 +41,7 @@ const ProductImage = styled.div`
 `;
 
 const Info = styled.div`
+  padding: 0 20px;
   .type {
     color: #aaa;
   }
@@ -58,14 +66,96 @@ const Info = styled.div`
     font-weight: 500;
     letter-spacing: 1px;
     font-size: 30px;
-    padding: 8px 16px;
+    padding: 8px 32px;
     background-color: ${theme.color.greyF7};
     border-radius: 5px;
     margin-top: 30px;
   }
 `;
 
+const Amount = styled.div`
+  display: flex;
+  font-size: 20px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+
+  .edit-amount {
+    padding: 10px 20px;
+    font-weight: bold;
+    /* border: 1px solid black; */
+    cursor: pointer;
+    &:hover {
+      background-color: ${theme.color.greyF7};
+    }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input {
+    width: 0;
+    flex: 1;
+    display: inline-block;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+`;
+
+const AddToCart = styled.div`
+  display: flex;
+  margin-top: 30px;
+  gap: 20px;
+  .button {
+    cursor: pointer;
+    background-color: ${theme.color.green2A};
+    color: white;
+    padding: 12px 28px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: ${theme.color.green26};
+    }
+  }
+`;
+
 const DetailProduct = () => {
+  const navigate = useNavigate();
+  const [product, setProduct] = useState<Product>();
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (!id) {
+      navigate("/product");
+    } else {
+      if (isNaN(+id)) {
+        navigate("/product");
+      }
+    }
+    const getProduct = async () => {
+      try {
+        const response = await axios.get(ENDPOINTS.detailProduct + id);
+        if (response.status === 200) {
+          setProduct(response.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, []);
+
   const StarStyle = {
     style: {
       padding: "0",
@@ -86,24 +176,32 @@ const DetailProduct = () => {
   return (
     <StyledContainer>
       <ProductImage>
-        <img
-          src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
-          alt=""
-        />
+        <img src={product?.image} alt="" />
       </ProductImage>
       <Info>
-        <p className="type">men's clothing</p>
-        <h1 className="title">Mens Casual Premium Slim Fit T-Shirts</h1>
+        <p className="type">{product?.category}</p>
+        <h2 className="title">{product?.title}</h2>
         <p className="rate">
-          <span className="point">3.9</span>
-          <StarsRating value={3.9} disabled style={StarStyle} />
-          <span className="rate-count">420 rate</span>
+          <span className="point">{product?.rating.rate}</span>
+          <StarsRating
+            value={product?.rating.rate}
+            disabled
+            style={StarStyle}
+          />
+          <span className="rate-count">{product?.rating.count} rate</span>
         </p>
-        <p className="description">
-          Your perfect pack for everyday use and walks in the forest. Stash your
-          laptop (up to 15 inches) in the padded sleeve, your everyday
-        </p>
-        <p className="price">$109.95</p>
+        <p className="description">{product?.description}</p>
+        <p className="price">${product?.price}</p>
+        <AddToCart>
+          <Amount>
+            <div className="edit-amount">-</div>
+            <input type="number" defaultValue={10} />
+            <div className="edit-amount">+</div>
+          </Amount>
+          <div className="button">
+            Add to cart <AddShoppingCartIcon />
+          </div>
+        </AddToCart>
       </Info>
     </StyledContainer>
   );

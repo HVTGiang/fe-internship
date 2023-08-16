@@ -4,6 +4,8 @@ import { Product } from "../type";
 import { useEffect, useLayoutEffect, useState } from "react";
 import axios from "axios";
 import ENDPOINTS from "../../../api/endpoint";
+import { Link } from "react-router-dom";
+import Toasts from "./Toast";
 
 const StyledBody = styled.div`
   max-width: 1280px;
@@ -21,6 +23,7 @@ const List = styled.div`
   column-gap: 20px;
   row-gap: 20px;
 `;
+
 type Props = {
   data: Array<Product>;
 };
@@ -47,9 +50,14 @@ const Body = () => {
       <List>
         {data?.map((p: Product) => (
           <Item data={p} key={p.id} />
+          // <Link to={"/product/" + p.id}>
+          //   <Item data={p} key={p.id} />
+          // </Link>
         ))}
       </List>
+      {/* {Toasts.ToastContainer} */}
     </StyledBody>
   );
 };
+
 export default Body;

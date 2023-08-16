@@ -4,6 +4,8 @@ import SearchBox from "./SearchBox";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { RootState } from "../../../store";
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -72,10 +74,12 @@ const User = styled.div`
     display: block;
     object-fit: cover;
     object-position: center;
-    
   }
 `;
 const Header = () => {
+  const cart = useSelector((state: RootState) => state.cart);
+  console.log(cart);
+
   return (
     <StyledHeader>
       <StyledList>
@@ -89,7 +93,7 @@ const Header = () => {
       <Info>
         <SearchBox />
         <IconButton aria-label="cart">
-          <StyledBadge badgeContent={80} color="primary">
+          <StyledBadge badgeContent={cart.items.length} color="primary">
             <ShoppingCartIcon />
           </StyledBadge>
         </IconButton>
