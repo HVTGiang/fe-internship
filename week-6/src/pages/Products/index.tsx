@@ -1,6 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import Body from "./Body";
-import Header from "./Header";
+import Header from "../Header";
 import DetailProduct from "./DetailProduct";
 
 export const Products = () => {

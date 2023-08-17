@@ -10,6 +10,7 @@ import { getCookie } from "./cookie";
 import { Products } from "./pages/Products";
 import { Provider } from "react-redux";
 import store from "./store";
+import CartDetail from "./pages/Cart";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -45,6 +46,7 @@ function App() {
               />
               <Route path="/product/*" element={<Products />} />
               <Route path="/authen/*" element={<AuthenPage />} />
+              <Route path="/cart" element={<CartDetail />} />
             </Routes>
           </StyledApp>
         </BrowserRouter>

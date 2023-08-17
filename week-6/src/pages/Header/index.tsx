@@ -1,19 +1,21 @@
 import styled from "@emotion/styled";
-import { theme } from "../../../mui-config/theme";
+import { theme } from "../../mui-config/theme";
 import SearchBox from "./SearchBox";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
-import { RootState } from "../../../store";
+import { useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { RootState } from "../../store";
+import Cart from "./Cart";
 
 const StyledList = styled.ul`
   list-style-type: none;
   display: flex;
   align-items: center;
   gap: 40px;
-  &:hover {
-  }
 `;
 
 type ToolsHeaderProps = {
@@ -22,6 +24,7 @@ type ToolsHeaderProps = {
 
 const StyledItem = styled.li<ToolsHeaderProps>`
   cursor: pointer;
+  color: black;
   transition: font-weight 0.2s;
 
   color: ${(props) =>
@@ -51,6 +54,13 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   background-color: ${theme.color.greyF7};
   padding: 10px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  overflow: auto;
+
+  .cart-icon:hover {
+  }
 `;
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -76,9 +86,25 @@ const User = styled.div`
     object-position: center;
   }
 `;
+
+const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #ccc;
+`;
+
 const Header = () => {
   const cart = useSelector((state: RootState) => state.cart);
-  console.log(cart);
+  const ref = useRef<HTMLDivElement>();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(ref);
+  }, []);
 
   return (
     <StyledHeader>
@@ -86,17 +112,33 @@ const Header = () => {
         <StyledItem>
           <h1>Logo</h1>
         </StyledItem>
-        <StyledItem active>Products</StyledItem>
+        <Link to={"/product/"}>
+          <StyledItem active>Products</StyledItem>
+        </Link>
         <StyledItem>FAQs</StyledItem>
         <StyledItem>About us</StyledItem>
       </StyledList>
       <Info>
         <SearchBox />
-        <IconButton aria-label="cart">
-          <StyledBadge badgeContent={cart.items.length} color="primary">
-            <ShoppingCartIcon />
-          </StyledBadge>
-        </IconButton>
+        <div
+          onMouseOut={() => {
+            if (ref?.current) {
+              ref.current.style.display = "none";
+            }
+          }}
+          onMouseOver={() => {
+            if (ref?.current) {
+              ref.current.style.display = "flex";
+            }
+          }}
+        >
+          <IconButton aria-label="cart" onClick={() => navigate("/cart")}>
+            <StyledBadge badgeContent={cart.items.length} color="primary">
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
+          <Cart ref={ref}></Cart>
+        </div>
         <User>
           <img src="/img/avatar.jpg" alt="" />
         </User>

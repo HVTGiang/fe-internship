@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Item from "../Item";
-import { Product } from "../type";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { Product } from "../../../type/type";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ENDPOINTS from "../../../api/endpoint";
 import { Link } from "react-router-dom";
@@ -19,7 +19,7 @@ const Title = styled.h2`
 const List = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   column-gap: 20px;
   row-gap: 20px;
 `;
@@ -30,6 +30,7 @@ type Props = {
 
 const Body = () => {
   const [data, setData] = useState(Array<Product>);
+  const ref = useRef();
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -42,7 +43,16 @@ const Body = () => {
       }
     };
     getProducts();
-  }, [data]);
+    console.log(ref);
+  }, []);
+  interface ToastProps {
+    message: string;
+    type: string;
+  }
+  const handleAddToast = ({}: ToastProps) => {
+    const container = ref.current;
+    // TODO: research
+  };
 
   return (
     <StyledBody>
@@ -55,7 +65,7 @@ const Body = () => {
           // </Link>
         ))}
       </List>
-      {/* {Toasts.ToastContainer} */}
+      {/* <Toasts ref={ref}></Toasts> */}
     </StyledBody>
   );
 };

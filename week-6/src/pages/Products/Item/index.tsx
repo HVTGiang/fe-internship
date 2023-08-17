@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { theme } from "../../../mui-config/theme";
-import { Product } from "../type";
+import { Product } from "../../../type/type";
 import { useNavigate } from "react-router-dom";
 import ENDPOINTS from "../../../api/endpoint";
 import { useDispatch } from "react-redux/es/exports";
@@ -24,7 +24,7 @@ const ProductImage = styled.div`
   box-sizing: border-box;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
-  height: 250px;
+  height: 200px;
 
   img {
     display: block;

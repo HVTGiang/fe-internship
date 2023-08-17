@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../mui-config/theme";
+import { forwardRef } from "react";
 interface ToastProps {
   message: string;
   type: string;
@@ -67,31 +68,16 @@ const ToastContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
 `;
-const Toast = ({ message, type }: ToastProps) => {
+export const Toast = ({ message, type }: ToastProps) => {
   return (
     <StyledToast className={type}>
       <p>{message}</p>
     </StyledToast>
   );
 };
-const Toasts = () => {
+const Toasts = ({ children }: any, ref: any) => {
   var toast = Array<ToastProps>();
-  toast.push({
-    message: "10 điểm nha",
-    type: "success",
-  });
-  const addToast = (item: ToastProps) => {
-    toast.splice(0, 0, item);
-    const timeOutID = setTimeout(() => {
-      toast.pop();
-    }, 4000);
-  };
-  return (
-    <ToastContainer>
-      {toast.map((i) => (
-        <Toast message={i.message} type={i.type} key={i.message + i.type} />
-      ))}
-    </ToastContainer>
-  );
+  return <ToastContainer ref={ref}>{children}</ToastContainer>;
 };
-export default Toasts;
+
+export default forwardRef(Toasts);

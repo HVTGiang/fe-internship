@@ -7,7 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { theme } from "../../../mui-config/theme";
 import ENDPOINTS from "../../../api/endpoint";
-import { Product } from "../type";
+import { Product } from "../../../type/type";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../store/cartSlice";
 
 const StyledContainer = styled.div`
   margin: 20px auto;
@@ -134,7 +136,8 @@ const DetailProduct = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product>();
   const { id } = useParams();
-
+  const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (!id) {
       navigate("/product");
@@ -143,6 +146,7 @@ const DetailProduct = () => {
         navigate("/product");
       }
     }
+
     const getProduct = async () => {
       try {
         const response = await axios.get(ENDPOINTS.detailProduct + id);
@@ -173,6 +177,13 @@ const DetailProduct = () => {
     },
   };
 
+  const handleAddToCart = () => {
+    if (product && count > 0) {
+      console.log(product);
+      dispatch(addItem({ item: product, count: count }));
+    }
+  };
+
   return (
     <StyledContainer>
       <ProductImage>
@@ -194,11 +205,32 @@ const DetailProduct = () => {
         <p className="price">${product?.price}</p>
         <AddToCart>
           <Amount>
-            <div className="edit-amount">-</div>
-            <input type="number" defaultValue={10} />
-            <div className="edit-amount">+</div>
+            <div
+              className="edit-amount"
+              onClick={() => {
+                if (count - 1 > 0) {
+                  setCount((prev) => prev - 1);
+                }
+              }}
+            >
+              -
+            </div>
+            <input
+              type="number"
+              value={count}
+              min={1}
+              onChange={(e) => setCount(parseInt(e.target.value))}
+            />
+            <div
+              className="edit-amount"
+              onClick={() => {
+                setCount((prev) => prev + 1);
+              }}
+            >
+              +
+            </div>
           </Amount>
-          <div className="button">
+          <div className="button" onClick={handleAddToCart}>
             Add to cart <AddShoppingCartIcon />
           </div>
         </AddToCart>
