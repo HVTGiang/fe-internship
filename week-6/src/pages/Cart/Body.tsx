@@ -1,11 +1,14 @@
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import styled from "@emotion/styled";
+
 import { theme } from "../../mui-config/theme";
 import DollarFormarter from "../../utils/dollarFormarter";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { useMemo } from "react";
 import { deleteItem, setItemCount } from "../../store/cartSlice";
-import { useNavigate } from "react-router-dom";
 
 const StyledBody = styled.div`
   max-width: 1280px;
@@ -98,6 +101,7 @@ const Item = styled.li`
   }
 
   .delete {
+    cursor: pointer;
     padding: 4px 16px;
     border: 1px solid ${theme.palette.warning.main};
     border-radius: 5px;
@@ -145,28 +149,6 @@ const Amount = styled.div`
   }
 `;
 
-const AddToCart = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  .button {
-    cursor: pointer;
-    background-color: ${theme.color.green2A};
-    color: white;
-    padding: 12px 28px;
-    font-weight: 600;
-    border-radius: 5px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: background-color 0.2s;
-    &:hover {
-      background-color: ${theme.color.green26};
-    }
-  }
-`;
-
 const Summary = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -193,6 +175,7 @@ const Summary = styled.div`
 `;
 
 const Body = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state: RootState) => state.cart);
@@ -206,6 +189,7 @@ const Body = () => {
       return previousValue + item.count;
     }, 0);
   }, [cart]);
+  
   const toMinimize = (text: string, length: number) => {
     const dots = "...";
     if (text.length <= length) {
@@ -274,7 +258,7 @@ const Body = () => {
               dispatch(deleteItem({ item: item }));
             }}
           >
-            Delete
+            {t("detailCart.delete")}
           </p>
         </Item>
       );
@@ -283,7 +267,7 @@ const Body = () => {
 
   return (
     <StyledBody>
-      <Title>Your shopping cart</Title>
+      <Title>{t("detailCart.title")}</Title>
       {cart.items.length > 0 ? (
         <List>{RenderItem()}</List>
       ) : (
@@ -291,7 +275,8 @@ const Body = () => {
       )}
       <Summary>
         <p>
-          Total <span className="count-item">{totalItem}</span> items{" "}
+          {t("detailCart.total")}{" "}
+          <span className="count-item">{totalItem}</span> {t("detailCart.item")}{" "}
         </p>
         <p className="total">{DollarFormarter(total)}</p>
       </Summary>

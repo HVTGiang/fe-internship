@@ -4,6 +4,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { theme } from "../../../mui-config/theme";
 import ENDPOINTS from "../../../api/endpoint";
@@ -133,6 +134,7 @@ const AddToCart = styled.div`
 `;
 
 const DetailProduct = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product>();
   const { id } = useParams();
@@ -199,7 +201,9 @@ const DetailProduct = () => {
             disabled
             style={StarStyle}
           />
-          <span className="rate-count">{product?.rating.count} rate</span>
+          <span className="rate-count">
+            {product?.rating.count} {t("detailProduct.rate")}
+          </span>
         </p>
         <p className="description">{product?.description}</p>
         <p className="price">${product?.price}</p>
@@ -231,7 +235,7 @@ const DetailProduct = () => {
             </div>
           </Amount>
           <div className="button" onClick={handleAddToCart}>
-            Add to cart <AddShoppingCartIcon />
+            {t("detailProduct.add-to-cart")} <AddShoppingCartIcon />
           </div>
         </AddToCart>
       </Info>

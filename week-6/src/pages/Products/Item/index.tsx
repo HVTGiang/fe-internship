@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ENDPOINTS from "../../../api/endpoint";
 import { useDispatch } from "react-redux/es/exports";
 import { addItem } from "../../../store/cartSlice";
+import { useTranslation } from "react-i18next";
 
 const StyledItem = styled.div`
   text-decoration: none;
@@ -83,6 +84,7 @@ type Props = {
   data: Product;
 };
 const Item = ({ data }: Props) => {
+  const { t } = useTranslation();
   const { image, title, price, id } = data;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -109,7 +111,7 @@ const Item = ({ data }: Props) => {
         <div className="group">
           <p>${price}</p>
           <div className="button" onClick={handleAddToCart}>
-            <span>Add </span>
+            <span>{t("products.item.add")} </span>
             <AddShoppingCartIcon />
           </div>
         </div>

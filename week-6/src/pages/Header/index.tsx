@@ -7,9 +7,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 import { useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { RootState } from "../../store";
 import Cart from "./Cart";
+import i18n from "../../i18n";
+import LanguageBox from "./LanguageBox";
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -42,7 +45,7 @@ const StyledItem = styled.li<ToolsHeaderProps>`
 `;
 
 const Info = styled.div`
-  width: 30%;
+  width: 40%;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -101,6 +104,7 @@ const Header = () => {
   const cart = useSelector((state: RootState) => state.cart);
   const ref = useRef<HTMLDivElement>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.log(ref);
@@ -113,13 +117,14 @@ const Header = () => {
           <h1>Logo</h1>
         </StyledItem>
         <Link to={"/product/"}>
-          <StyledItem active>Products</StyledItem>
+          <StyledItem active>{t("header.products")}</StyledItem>
         </Link>
         <StyledItem>FAQs</StyledItem>
-        <StyledItem>About us</StyledItem>
+        <StyledItem>{t("header.about-us")}</StyledItem>
       </StyledList>
       <Info>
-        <SearchBox />
+        <LanguageBox />
+        <SearchBox label={t("header.search-product")} />
         <div
           onMouseOut={() => {
             if (ref?.current) {

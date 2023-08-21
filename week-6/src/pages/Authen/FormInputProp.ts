@@ -1,6 +1,6 @@
 export interface FormInputProp {
   name: string;
   control: any;
-  label: any;
+  label: string;
   type?: string;
 }

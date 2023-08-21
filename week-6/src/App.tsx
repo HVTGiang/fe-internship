@@ -9,6 +9,9 @@ import DashBoard from "./pages/DashBoard";
 import { getCookie } from "./cookie";
 import { Products } from "./pages/Products";
 import { Provider } from "react-redux";
+import i18n from "./i18n";
+import { I18nextProvider } from "react-i18next";
+
 import store from "./store";
 import CartDetail from "./pages/Cart";
 
@@ -36,20 +39,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <BrowserRouter>
-          <StyledApp className="App">
-            <Routes>
-              <Route
-                path="/"
-                index
-                element={isLogged ? <Products /> : <AuthenPage />}
-              />
-              <Route path="/product/*" element={<Products />} />
-              <Route path="/authen/*" element={<AuthenPage />} />
-              <Route path="/cart" element={<CartDetail />} />
-            </Routes>
-          </StyledApp>
-        </BrowserRouter>
+        <I18nextProvider i18n={i18n}>
+          <BrowserRouter>
+            <StyledApp className="App">
+              <Routes>
+                <Route
+                  path="/"
+                  index
+                  element={isLogged ? <Products /> : <AuthenPage />}
+                />
+                <Route path="/product/*" element={<Products />} />
+                <Route path="/authen/*" element={<AuthenPage />} />
+                <Route path="/cart" element={<CartDetail />} />
+              </Routes>
+            </StyledApp>
+          </BrowserRouter>
+        </I18nextProvider>
       </Provider>
     </ThemeProvider>
   );

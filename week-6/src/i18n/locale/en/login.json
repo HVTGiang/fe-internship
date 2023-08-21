@@ -1,0 +1,14 @@
+{
+  "login": {
+    "title": "Functional",
+    "welcome-text": "Enter your Credentials to access your account",
+    "email": "Email",
+    "required": "Please fill this section",
+    "password": "Password",
+    "invalid-email": "Invalid email format",
+    "remember": "Remember me",
+    "login": "Login",
+    "swap": "You don't have an account?",
+    "sign-up": "Sign up"
+  }
+}

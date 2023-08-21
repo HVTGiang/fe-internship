@@ -1,20 +1,22 @@
 import { ChangeEvent, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { object, string } from "yup";
 
 import styled from "@emotion/styled";
 import { Typography, Button, FormControlLabel, Checkbox } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import TextInputField from "./TextInputField";
-import PasswordField from "./PasswordField";
-import axios from "axios";
 import { AlertColor } from "@mui/material";
 
-import { object, string } from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, SubmitHandler } from "react-hook-form";
-
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import SnackBar from "./SnackBar";
+import TextInputField from "./TextInputField";
+import PasswordField from "./PasswordField";
+
 import { setCookie } from "../../cookie";
 import ENDPOINTS from "../../api/endpoint";
 
@@ -68,7 +70,7 @@ const ErrorMessage = styled.p`
 const Login = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  const { t } = useTranslation();
 
   const [isRemember, setIsRemember] = useState(false);
   const [snackBarState, setSnackBarState] = useState({
@@ -77,8 +79,10 @@ const Login = () => {
     type: "warning" as AlertColor,
   });
   const yubSchema = object().shape({
-    username: string().email().required("Please fill this section"),
-    password: string().required("Please fill this section"),
+    username: string()
+      .email(t("login.invalid-email"))
+      .required(t("login.required")),
+    password: string().required(t("login.required")),
   });
 
   // form từ react hook form
@@ -86,7 +90,6 @@ const Login = () => {
     formState: { isValid, errors },
     control,
     handleSubmit,
-    getValues,
   } = useForm({
     defaultValues: {},
     mode: "onTouched",
@@ -98,7 +101,7 @@ const Login = () => {
     navigate("/authen/signup");
   };
   const navigateDashboard = () => {
-    navigate("/products");
+    navigate("/product");
   };
 
   const onSubmit: SubmitHandler<object> = async (data) => {
@@ -116,10 +119,10 @@ const Login = () => {
       let message = "";
       switch (err?.response?.status) {
         case 400:
-          message = "User is not found";
+          message = t("user-not-found");
           break;
         default:
-          message = "Login failed";
+          message = t("login-failed");
           break;
       }
       setSnackBarState((prev) => {
@@ -155,25 +158,27 @@ const Login = () => {
       <StyledLogin>
         <StyledTitle>
           <Typography variant="h4" fontWeight={700} color={theme.color.green26}>
-            Welcome back!
+            {t("login.title")}
           </Typography>
-          <Typography fontWeight={500}>
-            Enter your Credentials to access your account
-          </Typography>
+          <Typography fontWeight={500}>{t("login.welcome-text")}</Typography>
         </StyledTitle>
         <StyledForm action="" onSubmit={handleSubmit(onSubmit)}>
           <TextInputField
             name="username"
-            label="Username"
+            label={t("login.email")}
             control={control}
             type="email"
           />
           <ErrorMessage>{errors.username?.message}</ErrorMessage>
-          <PasswordField name="password" label="Password" control={control} />
+          <PasswordField
+            name="password"
+            label={t("login.password")}
+            control={control}
+          />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
           <FormControlLabel
             style={{ width: "100%", margin: "20px 0 28px 0" }}
-            label="Remember me"
+            label={t("login.remember")}
             control={
               <Checkbox
                 value="end"
@@ -191,21 +196,21 @@ const Login = () => {
             type="submit"
             disableElevation
           >
-            Log in
+            {t("login.login")}
           </Button>
           <Typography
             variant="body1"
             color="initial"
             style={{ marginTop: "8px" }}
           >
-            You don't have an account?
+            {t("login.swap")}
             <StyledButton
               variant="text"
               color="info"
               size="large"
               onClick={navigateSignUp}
             >
-              Sign up
+              {t("login.sign-up")}
             </StyledButton>
           </Typography>
         </StyledForm>

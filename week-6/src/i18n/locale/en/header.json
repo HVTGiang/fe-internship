@@ -1,0 +1,17 @@
+{
+  "products": "Products",
+  "about-us": "About us",
+  "search-product": "Search product",
+  "cart": {
+    "title": "Your cart",
+    "detail": "Detail",
+    "total-item": "Total",
+    "item": "item(s)",
+    "empty": "Add something to your cart"
+  },
+  "language": {
+    "title": "Language",
+    "vi": "Vietnamese",
+    "en": "English"
+  }
+}

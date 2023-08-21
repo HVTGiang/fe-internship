@@ -1,0 +1,17 @@
+{
+  "products": "Sản phẩm",
+  "about-us": "Về chúng tôi",
+  "search-product": "Tìm kiếm sản phẩm",
+  "cart": {
+    "title": "Giỏ hàng",
+    "detail": "Chi tiết",
+    "total-item": "Tổng cộng",
+    "item": "món",
+    "empty": "Giỏ hàng trống trơn hà"
+  },
+  "language": {
+    "title": "Ngôn ngữ",
+    "vi": "Tiếng Việt",
+    "en": "Tiếng Anh"
+  }
+}

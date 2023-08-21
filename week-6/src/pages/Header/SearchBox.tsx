@@ -14,15 +14,15 @@ const StyledSearchBox = styled(FormControl)`
   width: 40%;
 `;
 
-const SearchBox = () => {
+const SearchBox = ({ label }: any) => {
   const [searchString, setSearchString] = useState("");
 
   return (
     <StyledSearchBox margin="dense" size="small">
-      <InputLabel htmlFor="input-password">Search Product</InputLabel>
+      <InputLabel htmlFor="input-password">{label}</InputLabel>
       <OutlinedInput
         // notched={true}
-        label="Search Product"
+        label={label}
         type="text"
         id="input-password"
         endAdornment={

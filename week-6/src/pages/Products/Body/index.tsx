@@ -6,6 +6,7 @@ import axios from "axios";
 import ENDPOINTS from "../../../api/endpoint";
 import { Link } from "react-router-dom";
 import Toasts from "./Toast";
+import { useTranslation } from "react-i18next";
 
 const StyledBody = styled.div`
   max-width: 1280px;
@@ -29,6 +30,7 @@ type Props = {
 };
 
 const Body = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState(Array<Product>);
   const ref = useRef();
   useEffect(() => {
@@ -56,7 +58,7 @@ const Body = () => {
 
   return (
     <StyledBody>
-      <Title>Products</Title>
+      <Title>{t("products.title")}</Title>
       <List>
         {data?.map((p: Product) => (
           <Item data={p} key={p.id} />

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-
 import { Route, Routes, Outlet } from "react-router-dom";
+
+import styled from "@emotion/styled";
 
 import Login from "./Login";
 import SignUp from "./SignUp";

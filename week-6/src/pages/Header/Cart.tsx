@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux";
-import { theme } from "../../mui-config/theme";
-import styled from "@emotion/styled";
-import { RootState } from "../../store";
-import DollarFormarter from "../../utils/dollarFormarter";
 import { useMemo } from "react";
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+import styled from "@emotion/styled";
+
+import { theme } from "../../mui-config/theme";
+import { RootState } from "../../store";
+import DollarFormarter from "../../utils/dollarFormarter";
 
 const StyledCart = styled.div`
   position: fixed;
@@ -157,17 +160,9 @@ const Item = styled.li`
     margin-left: 10px;
   }
 `;
-const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background-color: #ccc;
-`;
 
 const Cart = (props: any, ref: any) => {
+  const { t } = useTranslation();
   const cart = useSelector((state: RootState) => state.cart);
   const total = useMemo(() => {
     return cart.items.reduce<number>((previousValue, item, index, arr) => {
@@ -183,9 +178,9 @@ const Cart = (props: any, ref: any) => {
   return (
     <StyledCart ref={ref}>
       <div className="title">
-        <span className="text">Your cart</span>
+        <span className="text">{t("header.cart.title")}</span>
         <Link to={"/cart"}>
-          <span className="button">Detail</span>
+          <span className="button">{t("header.cart.detail")}</span>
         </Link>
       </div>
       <ul className="list">
@@ -215,13 +210,16 @@ const Cart = (props: any, ref: any) => {
             );
           })
         ) : (
-          <div className="nothing">Add something to your cart</div>
+          <div className="nothing">{t("header.cart.empty")}</div>
         )}
       </ul>
       {cart.items.length > 0 ? (
         <p className="total-group">
           {" "}
-          <span className="text">Total {totalItem} items: </span>
+          <span className="text">
+            {t("header.cart.total-item")} <b>{totalItem}</b>{" "}
+            {t("header.cart.item")}{" "}
+          </span>
           <span className="total"> {DollarFormarter(total)}</span>
         </p>
       ) : (

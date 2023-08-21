@@ -1,0 +1,16 @@
+{
+  "login": {
+    "title": "Chào mừng trở lại",
+    "welcome-text": "Đăng nhập để bắt đầu mua sắm nhoé!",
+    "email": "Email",
+    "required": "Vui lòng điền vào trường này",
+    "password": "Mật khẩu",
+    "invalid-email": "Định dạng email không đúng",
+    "remember": "Ghi nhớ đăng nhập",
+    "login": "Đăng nhập",
+    "swap": "Chưa có tài khoản?",
+    "sign-up": "Đăng ký",
+    "user-not-found": "Tài khoản không tồn tại",
+    "login-failed": "Đăng nhập thất bại"
+  }
+}
