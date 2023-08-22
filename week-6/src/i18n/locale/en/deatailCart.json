@@ -1,5 +1,6 @@
 {
   "title": "Your shopping cart",
-  "total": "Total {{value}} item(s)",
+  "total": "Total ",
+  "item": "item(s)",
   "delete": "Delete"
 }

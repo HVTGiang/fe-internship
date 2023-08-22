@@ -9,6 +9,8 @@
     "remember": "Remember me",
     "login": "Login",
     "swap": "You don't have an account?",
-    "sign-up": "Sign up"
+    "sign-up": "Sign up",
+    "user-not-found": "User not found",
+    "login-failed": "Login failed"
   }
 }

@@ -4,8 +4,7 @@ import styled from "@emotion/styled";
 import { theme } from "./mui-config/theme";
 import AuthenPage from "./pages/Authen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useMemo } from "react";
-import DashBoard from "./pages/DashBoard";
+
 import { getCookie } from "./cookie";
 import { Products } from "./pages/Products";
 import { Provider } from "react-redux";
@@ -13,7 +12,7 @@ import i18n from "./i18n";
 import { I18nextProvider } from "react-i18next";
 
 import store from "./store";
-import CartDetail from "./pages/Cart";
+import CartDetail from "./pages/CartDetail";
 
 declare module "@mui/material/styles" {
   interface Palette {

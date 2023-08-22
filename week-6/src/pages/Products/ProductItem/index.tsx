@@ -3,7 +3,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { theme } from "../../../mui-config/theme";
 import { Product } from "../../../type/type";
 import { useNavigate } from "react-router-dom";
-import ENDPOINTS from "../../../api/endpoint";
 import { useDispatch } from "react-redux/es/exports";
 import { addItem } from "../../../store/cartSlice";
 import { useTranslation } from "react-i18next";

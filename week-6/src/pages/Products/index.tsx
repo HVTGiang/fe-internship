@@ -1,7 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom";
-import Body from "./Body";
-import Header from "../Header";
+import AllProduct from "./AllProduct";
 import DetailProduct from "./DetailProduct";
+import Header from "../../components/Header";
 
 export const Products = () => {
   const Layout = (
@@ -15,7 +15,7 @@ export const Products = () => {
     <div className="board">
       <Routes>
         <Route element={Layout}>
-          <Route path="/" index element={<Body />} />
+          <Route path="/" index element={<AllProduct />} />
           <Route path="/:id" element={<DetailProduct />} />
         </Route>
       </Routes>

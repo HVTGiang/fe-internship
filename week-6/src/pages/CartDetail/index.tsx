@@ -1,11 +1,11 @@
-import Header from "../Header";
-import Body from "./Body";
+import Header from "../../components/Header";
+import CartContent from "./CartContent";
 
 const CartDetail = () => {
   return (
     <div>
       <Header />
-      <Body />
+      <CartContent />
     </div>
   );
 };

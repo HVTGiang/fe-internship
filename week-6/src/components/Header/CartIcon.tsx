@@ -162,8 +162,10 @@ const Item = styled.li`
 `;
 
 const Cart = (props: any, ref: any) => {
+
   const { t } = useTranslation();
   const cart = useSelector((state: RootState) => state.cart);
+  
   const total = useMemo(() => {
     return cart.items.reduce<number>((previousValue, item, index, arr) => {
       return previousValue + item.item.price * item.count;

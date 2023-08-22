@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
-import Item from "../Item";
+import Item from "../ProductItem";
 import { Product } from "../../../type/type";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ENDPOINTS from "../../../api/endpoint";
 import { Link } from "react-router-dom";
-import Toasts from "./Toast";
 import { useTranslation } from "react-i18next";
 
 const StyledBody = styled.div`
@@ -62,9 +61,6 @@ const Body = () => {
       <List>
         {data?.map((p: Product) => (
           <Item data={p} key={p.id} />
-          // <Link to={"/product/" + p.id}>
-          //   <Item data={p} key={p.id} />
-          // </Link>
         ))}
       </List>
       {/* <Toasts ref={ref}></Toasts> */}

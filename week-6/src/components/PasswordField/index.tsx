@@ -1,4 +1,3 @@
-import { FormInputProp } from "./FormInputProp";
 import { Controller } from "react-hook-form";
 import {
   FormControl,
@@ -11,6 +10,13 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 
+type FormInputProp = {
+    name: string;
+    control: any;
+    label: string;
+    type?: string;
+  };
+  
 const PasswordField = ({ name, control, label }: FormInputProp) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   return (

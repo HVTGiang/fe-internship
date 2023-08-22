@@ -1,18 +1,18 @@
-import styled from "@emotion/styled";
-import { theme } from "../../mui-config/theme";
-import SearchBox from "./SearchBox";
-import Badge, { BadgeProps } from "@mui/material/Badge";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import styled from "@emotion/styled";
+import { theme } from "../../mui-config/theme";
+import Badge, { BadgeProps } from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import { RootState } from "../../store";
-import Cart from "./Cart";
-import i18n from "../../i18n";
-import LanguageBox from "./LanguageBox";
+import CartIcon from "./CartIcon";
+import LanguageBox from "../LanguageBox";
+import SearchBox from "../SearchBox";
 
 const StyledList = styled.ul`
   list-style-type: none;
@@ -142,7 +142,7 @@ const Header = () => {
               <ShoppingCartIcon />
             </StyledBadge>
           </IconButton>
-          <Cart ref={ref}></Cart>
+          <CartIcon ref={ref}></CartIcon>
         </div>
         <User>
           <img src="/img/avatar.jpg" alt="" />

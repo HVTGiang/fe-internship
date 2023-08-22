@@ -13,9 +13,9 @@ import { AlertColor } from "@mui/material";
 
 import axios from "axios";
 
-import SnackBar from "./SnackBar";
-import TextInputField from "./TextInputField";
-import PasswordField from "./PasswordField";
+import SnackBar from "../../components/SnackBar";
+import TextInputField from "../../components/TextInputField";
+import PasswordField from "../../components/PasswordField";
 
 import { setCookie } from "../../cookie";
 import ENDPOINTS from "../../api/endpoint";
@@ -119,10 +119,10 @@ const Login = () => {
       let message = "";
       switch (err?.response?.status) {
         case 400:
-          message = t("user-not-found");
+          message = t("login.user-not-found");
           break;
         default:
-          message = t("login-failed");
+          message = t("login.login-failed");
           break;
       }
       setSnackBarState((prev) => {

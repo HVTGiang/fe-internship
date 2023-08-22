@@ -6,18 +6,17 @@ import { object, string, ref } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import styled from "@emotion/styled";
-import { Typography, Button} from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { AlertColor } from "@mui/material";
 
 import axios from "axios";
 
-import TextInputField from "./TextInputField";
-import PasswordField from "./PasswordField";
-import SnackBar from "./SnackBar";
+import TextInputField from "../../components/TextInputField";
+import PasswordField from "../../components/PasswordField";
+import SnackBar from "../../components/SnackBar";
 
 import { useTranslation } from "react-i18next";
-
 
 const StyleLogout = styled.div`
   background-color: white;
@@ -63,15 +62,13 @@ const ErrorMessage = styled.p`
   color: #ff784f;
   font-size: 12px;
   text-align: right;
-  margin: 0;
+  margin: 4px 0;
 `;
 
 const SignUp = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-  const emailRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const [snackBarState, setSnackBarState] = useState({
     open: false,
