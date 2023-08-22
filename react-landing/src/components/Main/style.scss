@@ -1,0 +1,48 @@
+@use "../../assets/style/index.scss" as *;
+
+#main {
+  flex: 1;
+  background-color: $grey;
+  padding: 20px 32px 0;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 0px 0;
+  }
+  @media screen and (max-width: 415px) {
+    padding: 8px 0 0 0;
+  }
+}
+
+.content-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0;
+  }
+}
+
+.contact {
+  flex: 0 260px;
+  margin-left: 29px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    margin: 30px;
+    flex: 0;
+  }
+  @media screen and (max-width: 415px) {
+    margin: 20px;
+  }
+
+  // @at-root .visitor .con-active {
+  //   display: none;
+  // }
+}

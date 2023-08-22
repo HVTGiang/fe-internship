@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Charles",
+      "lastName": "Deo",
+      "title": "UI/UX Designer",
+      "gender": "male",
+      "birthday": "1980-06-26",
+      "address": "2239 Hog Camp Road, Schaumburg",
+      "email": "charles5182@ummoh.com",
+      "phone": "33757005467",
+      "img": "./img/user_img.png",
+      "imgCover": "./img/info_cover.png",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "firstName": "Eddie",
+      "lastName": "Lobano",
+      "title": "Manager",
+      "gender": "male",
+      "birthday": "1987-06-26",
+      "address": "2239 Hog Camp Road, US",
+      "email": "eddie@ummoh.com",
+      "phone": "33757005467",
+      "img": "./img/avatar.jpg",
+      "imgCover": "./img/post_img_3.png",
+      "password": "123"
+    }
+  ]
+}
