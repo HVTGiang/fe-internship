@@ -12,6 +12,7 @@ import {
   const StyledSearchBox = styled(FormControl)`
     flex: 1;
     width: 40%;
+    margin-top: 4px;
   `;
   
   const SearchBox = ({

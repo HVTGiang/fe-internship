@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 export const Products = () => {
   const Layout = (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
     </>
   );

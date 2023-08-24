@@ -12,7 +12,7 @@ const LanguageBox = () => {
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
       <InputLabel id="demo-select-small-label">
-        {t("header.language.title")}
+        {/* {t("header.language.title")} */}
       </InputLabel>
       <Select
         labelId="demo-select-small-label"
@@ -21,7 +21,7 @@ const LanguageBox = () => {
         onChange={(e) => {
           i18n.changeLanguage(e.target.value);
         }}
-        label={t("header.language.title")}
+        // label={t("header.language.title")}
       >
         <MenuItem value={"vi"}>{t("header.language.vi")}</MenuItem>
         <MenuItem value={"en"}>{t("header.language.en")}</MenuItem>

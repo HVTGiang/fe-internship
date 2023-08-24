@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -56,7 +56,7 @@ const StyledHeader = styled.div`
   width: 100%;
   justify-content: space-between;
   background-color: ${theme.color.greyF7};
-  padding: 10px 40px;
+  padding: 4px 40px;
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -90,22 +90,12 @@ const User = styled.div`
   }
 `;
 
-const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background-color: #ccc;
-`;
-
 const Header = () => {
   const cart = useSelector((state: RootState) => state.cart);
   const ref = useRef<HTMLDivElement>();
   const navigate = useNavigate();
   const { t } = useTranslation();
-
+  const [page, setPage] = useState("products");
   useEffect(() => {
     console.log(ref);
   }, []);
@@ -117,7 +107,24 @@ const Header = () => {
           <h1>Logo</h1>
         </StyledItem>
         <Link to={"/product/"}>
-          <StyledItem active>{t("header.products")}</StyledItem>
+          <StyledItem
+            active={page === "products"}
+            onClick={() => {
+              setPage("products");
+            }}
+          >
+            {t("header.products")}
+          </StyledItem>
+        </Link>
+        <Link to={"/posts/"}>
+          <StyledItem
+            active={page === "posts"}
+            onClick={() => {
+              setPage("posts");
+            }}
+          >
+            {t("header.posts")}
+          </StyledItem>
         </Link>
         <StyledItem>FAQs</StyledItem>
         <StyledItem>{t("header.about-us")}</StyledItem>

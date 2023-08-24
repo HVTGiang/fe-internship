@@ -4,7 +4,7 @@ import CartContent from "./CartContent";
 const CartDetail = () => {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <CartContent />
     </div>
   );

@@ -13,6 +13,8 @@ import { I18nextProvider } from "react-i18next";
 
 import store from "./store";
 import CartDetail from "./pages/CartDetail";
+import { Posts } from "./pages/Posts";
+import Header from "./components/Header";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -41,6 +43,7 @@ function App() {
         <I18nextProvider i18n={i18n}>
           <BrowserRouter>
             <StyledApp className="App">
+              <Header />
               <Routes>
                 <Route
                   path="/"
@@ -49,6 +52,7 @@ function App() {
                 />
                 <Route path="/product/*" element={<Products />} />
                 <Route path="/authen/*" element={<AuthenPage />} />
+                <Route path="/posts/*" element={<Posts />} />
                 <Route path="/cart" element={<CartDetail />} />
               </Routes>
             </StyledApp>

@@ -35,7 +35,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources: resources,
-  fallbackLng: "vi",
+  fallbackLng: "en",
   debug: true,
   interpolation: {
     escapeValue: false, // not needed for react as it escapes by default
