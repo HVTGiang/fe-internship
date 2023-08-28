@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useRef, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import styled from "@emotion/styled";
@@ -91,14 +91,12 @@ const User = styled.div`
 `;
 
 const Header = () => {
+  const location = useLocation();
   const cart = useSelector((state: RootState) => state.cart);
   const ref = useRef<HTMLDivElement>();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [page, setPage] = useState("products");
-  useEffect(() => {
-    console.log(ref);
-  }, []);
+  const [page, setPage] = useState(() => location.pathname);
 
   return (
     <StyledHeader>
@@ -108,9 +106,9 @@ const Header = () => {
         </StyledItem>
         <Link to={"/product/"}>
           <StyledItem
-            active={page === "products"}
+            active={page === "/product/"}
             onClick={() => {
-              setPage("products");
+              setPage("/product/");
             }}
           >
             {t("header.products")}
@@ -118,9 +116,9 @@ const Header = () => {
         </Link>
         <Link to={"/posts/"}>
           <StyledItem
-            active={page === "posts"}
+            active={page === "/posts/"}
             onClick={() => {
-              setPage("posts");
+              setPage("/posts/");
             }}
           >
             {t("header.posts")}

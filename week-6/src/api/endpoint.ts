@@ -11,7 +11,7 @@ const ENDPOINTS = {
   posts: {
     allPosts: BASEURL_POST + "/",
     detailPosts: BASEURL_POST + "/",
-    commentsPostfix: "comments",
+    commentsPostfix: "/comments",
   },
   user: {
     allUser: BASEURL_USER + "/",
