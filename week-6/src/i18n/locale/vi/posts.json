@@ -1,0 +1,41 @@
+{
+  "thumbnail": {
+    "title": "Khám phá: Những câu chuyện và đánh giá",
+    "subtitle": "Tin tức mới về sản phẩm và cập nhật"
+  },
+  "search": "Tìm",
+  "recent-post": "Bài viết gần đây",
+  "all-post": "Tất cả bà viết",
+  "create-post": "+ Thêm bài viết",
+  "action": {
+    "delete": "Xoá",
+    "edit": "Sửa"
+  },
+  "delete-post": {
+    "title": "Bạn chắc chưa?",
+    "warning": "Bạn không thể khôi phục bài viết này!",
+    "delete": "Xoá",
+    "cancel": "Huỷ"
+  },
+  "detail": {
+    "by": "Bời",
+    "comments": "Bình luận",
+    "next": "Sau",
+    "prev": "Trước",
+    "leave-message": "Để lại bình luận"
+  },
+  "edit-post": {
+    "edit-title": "Chỉnh sửa bài viết",
+    "add-title": "Bài viết mới",
+    "title": "Tiêu đề",
+    "body": "Nội dung",
+    "upload": "Tải ảnh",
+    "cancel": "Huỷ",
+    "save": "Lưu"
+  },
+  "message": {
+    "add-post-success": "Thành công: thêm bài viết!",
+    "edit-post-success": "Thành công: sửa bài viết!",
+    "delete-post-success": "Thành công: xoá bài viết!"
+  }
+}

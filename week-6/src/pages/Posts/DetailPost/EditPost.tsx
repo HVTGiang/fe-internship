@@ -3,6 +3,7 @@ import { Post } from "../Type";
 import styled from "@emotion/styled";
 import { useState, useRef, ChangeEvent, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 import ENDPOINTS from "../../../api/endpoint";
 type Props = {
@@ -74,6 +75,7 @@ const EditPost = ({
   mode: "create" | "edit";
   [key: string]: any;
 }) => {
+  const { t } = useTranslation();
   const [data, setData] = useState({
     ...post,
     image: {
@@ -159,8 +161,8 @@ const EditPost = ({
             onSaveSuccess();
             onSwapVisible();
             if (response.status === 200)
-              onChangeMessage("Success: Edited post");
-            else onChangeMessage("Success: Create post");
+              onChangeMessage(t("posts.message.edit-post-success"));
+            else onChangeMessage(t("posts.message.add-post-success"));
           }
         } catch (err) {
           console.log("Update post failed");
@@ -182,12 +184,16 @@ const EditPost = ({
           e.stopPropagation();
         }}
       >
-        <h2>{mode === "create" ? "Add post" : "Edit post"}</h2>
+        <h2>
+          {mode === "create"
+            ? t("posts.edit-post.add-title")
+            : t("posts.edit-post.edit-title")}
+        </h2>
         <EditForm>
           <TextField
             margin="normal"
             fullWidth
-            label="Title"
+            label={t("posts.edit-post.title")}
             id="filled-hidden-label-small"
             // defaultValue={data.title}
             value={data.title}
@@ -199,7 +205,7 @@ const EditPost = ({
             margin="normal"
             fullWidth
             multiline
-            label="Body"
+            label={t("posts.edit-post.body")}
             id="filled-hidden-label-small"
             // defaultValue={data.body}
             value={data.body}
@@ -225,7 +231,7 @@ const EditPost = ({
                 {data.image ? data.image.name : "Choose an image for you post"}
               </p>
               <Button variant="contained" component="span">
-                Upload
+                {t("posts.edit-post.upload")}
               </Button>
             </label>
           </InputImage>
@@ -236,7 +242,7 @@ const EditPost = ({
               color="error"
               onClick={handleCloseEditMode}
             >
-              Cancel
+              {t("posts.edit-post.cancel")}
             </Button>
             <Button
               variant="contained"
@@ -244,7 +250,7 @@ const EditPost = ({
               color="success"
               onClick={handleEditPost}
             >
-              Save
+              {t("posts.edit-post.save")}
             </Button>
           </Action>
         </EditForm>

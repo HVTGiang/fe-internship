@@ -4,6 +4,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import ENDPOINTS from "../../../api/endpoint";
 import { Post } from "../Type";
@@ -12,21 +13,26 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 150px;
+  align-items: flex-start;
 `;
-
-const NavigateButton = styled.div`
-  /* flex: 1; */
+type NavButtonProps = {
+  right: boolean;
+};
+const NavigateButton = styled.div<NavButtonProps>`
+  flex: 1;
   cursor: pointer;
   padding: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: ${(props) => (props.right ? "flex-end" : "")};
   .text {
     display: flex;
     flex-direction: column;
   }
   .right {
     align-items: flex-end;
+    text-align: right;
   }
   .bold {
     font-weight: bold;
@@ -34,6 +40,7 @@ const NavigateButton = styled.div`
 `;
 
 const NavigatePost = ({ currentPost }: { currentPost: number }) => {
+  const { t } = useTranslation();
   const [prev, setPrev] = useState<Post>();
   const [next, setNext] = useState<Post>();
   const navigate = useNavigate();
@@ -70,10 +77,13 @@ const NavigatePost = ({ currentPost }: { currentPost: number }) => {
   return (
     <Container>
       {prev ? (
-        <NavigateButton onClick={() => handleNavigateTo(currentPost - 1)}>
+        <NavigateButton
+          onClick={() => handleNavigateTo(currentPost - 1)}
+          right={false}
+        >
           <ArrowBackIosNewIcon />
           <div className="text">
-            <span>Previous</span>
+            <span>{t("posts.detail.prev")}</span>
             <span className="bold">{prev ? prev.title : ""}</span>
           </div>
         </NavigateButton>
@@ -81,9 +91,9 @@ const NavigatePost = ({ currentPost }: { currentPost: number }) => {
         <div></div>
       )}
       {next ? (
-        <NavigateButton onClick={() => handleNavigateTo(currentPost + 1)}>
+        <NavigateButton onClick={() => handleNavigateTo(currentPost + 1)} right>
           <div className="text right">
-            <span>Next</span>
+            <span>{t("posts.detail.next")}</span>
             <span className="bold">{next ? next.title : ""}</span>
           </div>
           <ArrowForwardIosIcon />

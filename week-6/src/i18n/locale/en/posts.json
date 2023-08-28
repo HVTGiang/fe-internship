@@ -1,0 +1,41 @@
+{
+  "thumbnail": {
+    "title": "Inside Design: Stories and interviews",
+    "subtitle": "News about new product features and updates."
+  },
+  "search": "Search",
+  "recent-post": "Recent posts",
+  "all-post": "All posts",
+  "create-post": "+ Create a new post",
+  "action": {
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "delete-post": {
+    "title": "Are you sure?",
+    "warning": "You are not be able to recover this post!",
+    "delete": "Delete",
+    "cancel": "Cancel"
+  },
+  "detail": {
+    "by": "By",
+    "comments": "Comments",
+    "next": "Next",
+    "prev": "Previous",
+    "leave-message": "Leave a message"
+  },
+  "edit-post": {
+    "edit-title": "Edit post",
+    "add-title": "Add post",
+    "title": "Title",
+    "body": "Body",
+    "upload": "Upload",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "message": {
+    "add-post-success": "Success: Add post!",
+    "edit-post-success": "Success: Edit post!",
+    "delete-post-success": "Success: Delete post!"
+  }
+}

@@ -5,7 +5,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
+
 import EditPost from "./DetailPost/EditPost";
 import { Post } from "./Type";
 
@@ -27,11 +29,13 @@ const ActionButtons = ({
   post?: Post;
   [key: string]: any;
 }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [openEditMode, setOpenEditMode] = useState(false);
 
   const handleAgree = () => {
     handleDelete();
+    onChangeMessage(t("posts.message.delete-post-success"));
     setOpen(false);
   };
   const handleDisagree = () => {
@@ -59,7 +63,7 @@ const ActionButtons = ({
           handleDeleteClick();
         }}
       >
-        Delete
+        {t("posts.delete-post.delete")}
       </Button>
       <Button
         variant="text"
@@ -70,7 +74,7 @@ const ActionButtons = ({
           swapEditMode();
         }}
       >
-        Edit
+        {t("posts.action.edit")}
       </Button>
       <Dialog
         open={open}
@@ -82,10 +86,12 @@ const ActionButtons = ({
           e.stopPropagation();
         }}
       >
-        <DialogTitle id="alert-dialog-title">{"Are you sure?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {t("posts.delete-post.title")}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You are not be able to recover this post!
+            {t("posts.delete-post.warning")}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -97,7 +103,7 @@ const ActionButtons = ({
             variant="text"
             color="error"
           >
-            Delete
+            {t("posts.delete-post.delete")}
           </Button>
           <Button
             onClick={(e) => {
@@ -106,7 +112,7 @@ const ActionButtons = ({
             }}
             autoFocus
           >
-            Cancel
+            {t("posts.delete-post.cancel")}
           </Button>
         </DialogActions>
       </Dialog>

@@ -10,6 +10,8 @@ import detailCartEN from "./locale/en/deatailCart.json";
 import detailCartVI from "./locale/vi/deatailCart.json";
 import productsEN from "./locale/en/products.json";
 import productsVI from "./locale/vi/products.json";
+import postsEN from "./locale/en/posts.json";
+import postsVI from "./locale/vi/posts.json";
 
 const resources = {
   en: {
@@ -20,6 +22,7 @@ const resources = {
       products: productsEN,
       header: headerEN,
       detailProduct: detailProductEN,
+      posts: postsEN,
     },
   },
   vi: {
@@ -29,6 +32,7 @@ const resources = {
       products: productsVI,
       header: headerVI,
       detailProduct: detailProductVI,
+      posts: postsVI,
     },
   },
 };

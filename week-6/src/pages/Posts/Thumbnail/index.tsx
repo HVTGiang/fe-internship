@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { theme } from "../../../mui-config/theme";
+import { useTranslation } from "react-i18next";
+
 import SearchGroup from "../../../components/SearchGroup";
 
 const StyledThumbnail = styled.div`
@@ -30,10 +32,11 @@ const StyledSearchGroup = styled.div`
 `;
 
 const Thumbnail = () => {
+  const { t } = useTranslation();
   return (
     <StyledThumbnail>
-      <Title>Inside Design: Stories and interviews</Title>
-      <SubTitle>News about new product features and updates.</SubTitle>
+      <Title>{t('posts.thumbnail.title')}</Title>
+      <SubTitle>{t('posts.thumbnail.subtitle')}</SubTitle>
       <StyledSearchGroup>
         <SearchGroup />
       </StyledSearchGroup>

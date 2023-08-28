@@ -1,5 +1,7 @@
 import { Comment } from "../Type";
 import styled from "@emotion/styled";
+import { useTranslation } from "react-i18next";
+
 import CommentComponent from "./Comment";
 import AddComment from "./AddComment";
 
@@ -13,9 +15,10 @@ const List = styled.ul`
   margin-top: 20px;
 `;
 const Comments = ({ data }: { data: Array<Comment> }) => {
+  const { t } = useTranslation();
   return (
     <Container>
-      <Title>Comments</Title>
+      <Title>{ t("posts.detail.comments") } </Title>
       <List>
         {data.map((item) => (
           <CommentComponent comment={item} />

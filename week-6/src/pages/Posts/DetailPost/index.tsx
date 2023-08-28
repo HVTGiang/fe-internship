@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { useTranslation } from "react-i18next";
 
 import ENDPOINTS from "../../../api/endpoint";
 import { Comment, Post, User } from "../Type";
@@ -97,6 +98,7 @@ const Image = styled.div`
   }
 `;
 const DetailPost = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   console.log(id);
   const navigateTo = useNavigate();
@@ -172,7 +174,7 @@ const DetailPost = () => {
         <Header>
           <h1 className="title">{post.title}</h1>
           <p className="owner">
-            By <span>{owner.name}</span>
+            {t("posts.detail.by")} <span>{owner.name}</span>
           </p>
           <Image>
             <img src="/img/secondary-post-1.jpg" alt="" />
@@ -200,7 +202,7 @@ const DetailPost = () => {
               disableElevation
               onClick={swapEditMode}
             >
-              Edit
+              {t("posts.action.edit")}
             </Button>
           </EditButton>
         </Content>
@@ -220,7 +222,7 @@ const DetailPost = () => {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <Alert severity="success" sx={{ width: "100%" }}>
-          Success: Edited post!
+          {t("posts.message.edit-post-success")}
         </Alert>
       </Snackbar>
       <NavigatePost currentPost={id ? +id : 0} />

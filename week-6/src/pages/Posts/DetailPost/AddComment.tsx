@@ -1,5 +1,7 @@
 import { Comment } from "../Type";
 import styled from "@emotion/styled";
+import { useTranslation } from "react-i18next";
+
 import TextField from "@mui/material/TextField";
 
 const Box = styled.div`
@@ -21,6 +23,7 @@ const Avatar = styled.div`
   }
 `;
 const AddComment = () => {
+  const { t } = useTranslation();
   return (
     <Box>
       <Avatar>
@@ -33,7 +36,7 @@ const AddComment = () => {
         defaultValue=""
         variant="outlined"
         size="small"
-        placeholder="Leave a message"
+        placeholder={t("posts.detail.leave-message")}
       />
     </Box>
   );

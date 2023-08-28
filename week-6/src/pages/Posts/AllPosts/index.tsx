@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { Button, Snackbar, Alert } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 import ItemPost from "./ItemPost";
 import { Post } from "../Type";
 import Pagination from "./Pagination";
@@ -33,6 +35,7 @@ const PaginationContainer = styled.div`
 `;
 
 const AllPosts = ({ data }: { data: Array<Post> }) => {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const [openPanel, setOpenPanel] = useState(false);
   const [isSnackBarShow, setIsSnackBarShow] = useState(false);
@@ -58,14 +61,14 @@ const AllPosts = ({ data }: { data: Array<Post> }) => {
   return (
     <Container>
       <Title>
-        <h2>All posts</h2>
+        <h2>{t("posts.all-post")}</h2>
         <StyledButton
           variant="contained"
           color="success"
           disableElevation
           onClick={swapVisiblePanel}
         >
-          + Create a new post
+          {t("posts.create-post")}
         </StyledButton>
       </Title>
 
@@ -95,7 +98,7 @@ const AllPosts = ({ data }: { data: Array<Post> }) => {
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       >
         <Alert severity="success" sx={{ width: "100%" }}>
-          Success: Added post!
+          {t("posts.message.add-post-success")}
         </Alert>
       </Snackbar>
     </Container>

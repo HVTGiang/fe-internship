@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import PrimaryPost from "./PrimaryPost";
 import { Post } from "../Type";
 import SecondaryPost from "./SecondaryPost";
+import { useTranslation } from "react-i18next";
 
 const Container = styled.div`
   max-width: 1280px;
@@ -18,9 +19,10 @@ const GroupPost = styled.div`
 `;
 
 const RecentPosts = ({ data }: { data: Array<Post> }) => {
+  const { t } = useTranslation();
   return (
     <Container>
-      <h2>Recent posts</h2>
+      <h2>{t("posts.recent-post")}</h2>
       {data.length > 0 ? (
         <GroupPost>
           <PrimaryPost post={data[0]} />

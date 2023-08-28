@@ -2,6 +2,7 @@ import { Button, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Group = styled.div`
   display: flex;
@@ -13,6 +14,8 @@ const StyledButton = styled(Button)`
 `;
 
 const SearchGroup = () => {
+  const { t } = useTranslation();
+
   return (
     <Group>
       <TextField
@@ -24,7 +27,7 @@ const SearchGroup = () => {
         size="small"
       />
       <StyledButton variant="contained" color="success" disableElevation>
-        Search
+        {t("posts.search")}
       </StyledButton>
     </Group>
   );
